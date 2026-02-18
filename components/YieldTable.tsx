@@ -65,10 +65,15 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
     propertyTypesToShow.forEach((propType) => {
       bedroomsToShow.forEach((beds, bedIndex) => {
         const data = suburb[propType]?.bedrooms?.[beds]
-        // Skip if bedroom data doesn't exist
         if (!data) {
           return
         }
+        const rowYield = suburb[propType]?.yield?.[beds] || 0
+        
+        if (filters.minYield && rowYield < filters.minYield) {
+          return
+        }
+        
         rows.push({
           suburb,
           propertyType: propType,
@@ -76,7 +81,7 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
           bedIndex,
           buyPrice: data.buyPrice,
           rentPrice: data.rentPrice,
-          yield: suburb[propType]?.yield?.[beds] || 0,
+          yield: rowYield,
         })
       })
     })
