@@ -85,7 +85,7 @@ export default function Dashboard() {
 
           {/* Results Table */}
           <div className="lg:col-span-3">
-            <YieldTable suburbs={filteredSuburbs} onDataChange={handleDataChange} />
+            <YieldTable suburbs={filteredSuburbs} filters={filters} onDataChange={handleDataChange} />
           </div>
         </div>
       </main>

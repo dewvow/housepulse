@@ -1,15 +1,23 @@
 'use client'
 
-import { SuburbData, BedroomType, PropertyType } from '@/lib/types'
+import { useState, useMemo } from 'react'
+import { SuburbData, BedroomType, PropertyType, FilterState } from '@/lib/types'
 import { formatCurrency, formatPercentage } from '@/lib/calculations'
 import { deleteSuburb } from '@/lib/storage'
 
+type SortField = 'suburb' | 'price' | 'yield'
+type SortDirection = 'asc' | 'desc'
+
 interface YieldTableProps {
   suburbs: SuburbData[]
+  filters: FilterState
   onDataChange: () => void
 }
 
-export function YieldTable({ suburbs, onDataChange }: YieldTableProps) {
+export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) {
+  const [sortField, setSortField] = useState<SortField>('suburb')
+  const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
+
   const handleDelete = async (id: string) => {
     if (confirm('Are you sure you want to delete this suburb?')) {
       await deleteSuburb(id)
@@ -17,13 +25,18 @@ export function YieldTable({ suburbs, onDataChange }: YieldTableProps) {
     }
   }
 
-  const handleSort = (field: 'suburb' | 'price' | 'yield') => {
-    // Sorting would be implemented here
-    console.log('Sort by:', field)
+  const handleSort = (field: SortField) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
+    } else {
+      setSortField(field)
+      setSortDirection('asc')
+    }
   }
 
-  // Flatten data to show house and unit separately
-  const flattenedData = suburbs.flatMap((suburb) => {
+  // Flatten data to show house and unit separately, respecting filters
+  const flattenedData = useMemo(() => {
+    const data = suburbs.flatMap((suburb): typeof rows => {
     const rows: Array<{
       suburb: SuburbData
       propertyType: PropertyType
@@ -36,16 +49,24 @@ export function YieldTable({ suburbs, onDataChange }: YieldTableProps) {
     
     // Skip suburbs with missing data
     if (!suburb.house || !suburb.unit) {
-      console.warn('Suburb missing house/unit data:', suburb.suburb)
       return rows
     }
     
-    ;(['house', 'unit'] as PropertyType[]).forEach((propType) => {
-      ;(['2', '3', '4+'] as BedroomType[]).forEach((beds, bedIndex) => {
+    // Use filtered property types if specified, otherwise show all
+    const propertyTypesToShow = filters.propertyTypes.length > 0 
+      ? filters.propertyTypes 
+      : (['house', 'unit'] as PropertyType[])
+    
+    // Use filtered bedroom options if specified, otherwise show all
+    const bedroomsToShow = filters.bedrooms.length > 0
+      ? filters.bedrooms
+      : (['2', '3', '4+'] as BedroomType[])
+    
+    propertyTypesToShow.forEach((propType) => {
+      bedroomsToShow.forEach((beds, bedIndex) => {
         const data = suburb[propType]?.bedrooms?.[beds]
         // Skip if bedroom data doesn't exist
         if (!data) {
-          console.warn(`Missing ${propType} ${beds}-bed data for ${suburb.suburb}`)
           return
         }
         rows.push({
@@ -61,7 +82,20 @@ export function YieldTable({ suburbs, onDataChange }: YieldTableProps) {
     })
     
     return rows
-  })
+    })
+
+    return [...data].sort((a, b) => {
+      let comparison = 0
+      if (sortField === 'suburb') {
+        comparison = a.suburb.suburb.localeCompare(b.suburb.suburb)
+      } else if (sortField === 'price') {
+        comparison = a.buyPrice - b.buyPrice
+      } else if (sortField === 'yield') {
+        comparison = a.yield - b.yield
+      }
+      return sortDirection === 'asc' ? comparison : -comparison
+    })
+  }, [suburbs, filters, sortField, sortDirection])
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
