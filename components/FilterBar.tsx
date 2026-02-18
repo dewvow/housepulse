@@ -1,6 +1,6 @@
 'use client'
 
-import { FilterState, AUSTRALIAN_STATES, BEDROOM_OPTIONS, StateCode, BedroomType } from '@/lib/types'
+import { FilterState, AUSTRALIAN_STATES, BEDROOM_OPTIONS, PROPERTY_TYPES, StateCode, BedroomType, PropertyType } from '@/lib/types'
 
 interface FilterBarProps {
   filters: FilterState
@@ -22,6 +22,13 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
     onChange({ ...filters, bedrooms })
   }
 
+  const togglePropertyType = (type: PropertyType) => {
+    const propertyTypes = filters.propertyTypes.includes(type)
+      ? filters.propertyTypes.filter(t => t !== type)
+      : [...filters.propertyTypes, type]
+    onChange({ ...filters, propertyTypes })
+  }
+
   return (
     <div className="bg-white p-4 rounded-lg shadow-md space-y-4">
       <div>
@@ -40,6 +47,27 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
               }`}
             >
               {state.code}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Property Type
+        </label>
+        <div className="flex flex-wrap gap-2">
+          {PROPERTY_TYPES.map((type) => (
+            <button
+              key={type}
+              onClick={() => togglePropertyType(type)}
+              className={`px-3 py-1 text-sm rounded-full border capitalize ${
+                filters.propertyTypes.includes(type)
+                  ? 'bg-purple-500 text-white border-purple-500'
+                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+              }`}
+            >
+              {type}
             </button>
           ))}
         </div>

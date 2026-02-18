@@ -1,43 +1,25 @@
 // HousePulse Bookmarklet - Extract property data from realestate.com.au suburb pages
-// Usage: Run this code in your browser console on a realestate.com.au suburb profile page
+// Fixed version - extracts from table cells only, not page text
 
 (function() {
   'use strict';
   
-  // Check if we're on realestate.com.au
+  console.clear();
+  console.log('%c HousePulse Bookmarklet v2.1 ', 'background: #10b981; color: white; font-size: 16px; padding: 5px;');
+  
   if (!window.location.hostname.includes('realestate.com.au')) {
     alert('This bookmarklet only works on realestate.com.au');
     return;
   }
 
-  // Helper functions
-  function extractText(selector) {
-    const el = document.querySelector(selector);
-    return el ? el.textContent.trim() : null;
-  }
+  console.log('Starting extraction...');
 
-  function extractPrice(text) {
-    if (!text) return 0;
-    const match = text.match(/[\d,]+/g);
-    if (!match) return 0;
-    const num = parseInt(match.join('').replace(/,/g, ''), 10);
-    return num || 0;
-  }
-
-  function extractRent(text) {
-    if (!text) return 0;
-    const match = text.match(/\$?([\d,]+)/);
-    if (!match) return 0;
-    return parseInt(match[1].replace(/,/g, ''), 10) || 0;
-  }
-
-  // Extract suburb info from URL or page
+  // Extract suburb info from URL
   const pathParts = window.location.pathname.split('/').filter(Boolean);
   let state = '';
   let suburb = '';
   let postcode = '';
 
-  // Parse URL: /vic/armadale-3143/
   if (pathParts.length >= 2) {
     state = pathParts[0].toUpperCase();
     const locationPart = pathParts[1];
@@ -48,106 +30,314 @@
     }
   }
 
-  // Check if this is a Hot 100 page
+  // Check for Hot 100
   const isHotPage = document.body.textContent.includes('Hot 100') || 
                     document.body.textContent.includes('Hot Suburbs') ||
                     window.location.pathname.includes('hot');
 
-  // Extract bedroom data
-  // Note: This needs to be adapted based on realestate.com.au's actual DOM structure
-  const bedroomData = {
-    '2': { salePrice: 0, rent: 0 },
-    '3': { salePrice: 0, rent: 0 },
-    '4+': { salePrice: 0, rent: 0 }
+  // Parse number from text (removes $, commas, and "per week")
+  const parseNumber = (text) => {
+    if (!text) return 0;
+    const match = text.match(/\$?([\d,]+)/);
+    if (!match) return 0;
+    const num = parseInt(match[1].replace(/,/g, ''), 10);
+    return isNaN(num) ? 0 : num;
   };
 
-  // Try to find data for each bedroom type
-  // Look for elements with bedroom indicators
-  document.querySelectorAll('[data-testid*="bed"], [class*="bed"]').forEach(el => {
-    const text = el.textContent || '';
+  // Find the median price snapshot table specifically
+  const findPriceTable = () => {
+    console.log('Looking for price table...');
     
-    // Extract bedroom count
-    let beds = null;
-    if (text.includes('2 bed') || text.includes('2 Bed')) beds = '2';
-    else if (text.includes('3 bed') || text.includes('3 Bed')) beds = '3';
-    else if (text.includes('4 bed') || text.includes('4 Bed') || text.includes('4+')) beds = '4+';
+    const snapshotSection = document.querySelector('section[class*="median-price-snapshot"]');
+    console.log('Found median-price-snapshot section:', snapshotSection ? 'YES' : 'NO');
     
-    if (beds) {
-      // Look for nearby price elements
-      const parent = el.closest('div, section, article');
-      if (parent) {
-        const priceEl = parent.querySelector('[data-testid*="price"], .price, [class*="price"]');
-        const rentEl = parent.querySelector('[data-testid*="rent"], .rent, [class*="rent"]');
-        
-        if (priceEl) {
-          bedroomData[beds].salePrice = extractPrice(priceEl.textContent);
-        }
-        if (rentEl) {
-          bedroomData[beds].rent = extractRent(rentEl.textContent);
-        }
+    if (snapshotSection) {
+      const table = snapshotSection.querySelector('table');
+      if (table) {
+        console.log('Found table in median-price-snapshot section');
+        return table;
       }
     }
-  });
-
-  // Fallback: Try to extract from page title and general content
-  const pageTitle = document.title;
-  const pageContent = document.body.innerText;
-
-  // Look for median price patterns
-  const priceMatch = pageContent.match(/Median\s+(?:house\s+)?price[:\s]+\$?([\d,\.]+[MK]?)/i);
-  const rentMatch = pageContent.match(/Median\s+(?:weekly\s+)?rent[:\s]+\$?([\d,]+)/i);
-
-  if (priceMatch && !bedroomData['3'].salePrice) {
-    bedroomData['3'].salePrice = extractPrice(priceMatch[1]);
-  }
-  if (rentMatch && !bedroomData['3'].rent) {
-    bedroomData['3'].rent = extractRent(rentMatch[1]);
-  }
-
-  // Build the result object
-  const result = {
-    suburb: suburb,
-    state: state,
-    postcode: postcode,
-    isHot: isHotPage,
-    bedrooms: bedroomData,
-    source: window.location.href,
-    date: new Date().toISOString().split('T')[0]
+    
+    console.log('Trying fallback: searching all tables for bed data...');
+    const tables = document.querySelectorAll('table');
+    console.log('Total tables found:', tables.length);
+    
+    for (let i = 0; i < tables.length; i++) {
+      const table = tables[i];
+      const hasBedData = table.querySelector('[data-testid*="-bed-"]');
+      if (hasBedData) {
+        console.log('Found price table (table #' + i + ') by bed data');
+        return table;
+      }
+    }
+    
+    console.log('ERROR: Could not find any table with bed data');
+    return null;
   };
 
-  // Copy to clipboard
-  const jsonString = JSON.stringify(result, null, 2);
-  navigator.clipboard.writeText(jsonString).then(() => {
-    // Show success message
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #10b981;
-      color: white;
-      padding: 16px 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 10000;
-      font-family: sans-serif;
-      font-size: 14px;
-      max-width: 400px;
-    `;
-    notification.innerHTML = `
-      <strong>✓ Data Extracted!</strong><br>
-      ${suburb}, ${state} ${postcode}<br>
-      <small style="opacity: 0.9">${isHotPage ? '🔥 Hot Suburb!' : ''}</small><br>
-      <small style="opacity: 0.9">Copied to clipboard - paste in HousePulse</small>
-    `;
-    document.body.appendChild(notification);
+  // Extract prices from table
+  const extractPricesFromTable = (table, label) => {
+    const prices = {};
     
-    setTimeout(() => {
-      notification.remove();
-    }, 5000);
+    if (!table) {
+      console.log('ERROR: No table provided to extractPricesFromTable');
+      return prices;
+    }
+    
+    console.log('=== EXTRACTING ' + label + ' PRICES ===');
+    
+    const rows = table.querySelectorAll('tbody tr, tr');
+    console.log('Found ' + rows.length + ' rows in table');
+    
+    if (rows.length === 0) {
+      console.log('WARNING: No rows found in table!');
+      console.log('Table innerHTML:', table.innerHTML.substring(0, 500));
+    }
+    
+    rows.forEach((row, index) => {
+      console.log('--- Row ' + index + ' ---');
+      
+      const testIdEl = row.querySelector('[data-testid*="-bed-"]');
+      if (!testIdEl) {
+        console.log('  No data-testid element found in this row');
+        return;
+      }
+      
+      const testId = testIdEl.getAttribute('data-testid');
+      console.log('  testid:', testId);
+      
+      const match = testId.match(/^(\d+)-bed-(house|unit)$/);
+      if (!match) {
+        console.log('  testid does not match pattern');
+        return;
+      }
+      
+      const beds = match[1];
+      const propType = match[2];
+      const key = propType + '-' + beds;
+      
+      const cells = row.querySelectorAll('td');
+      console.log('  cells found:', cells.length);
+      
+      if (cells.length < 2) {
+        console.log('  ERROR: Less than 2 cells in row');
+        return;
+      }
+      
+      const priceCell = cells[1];
+      const priceText = priceCell.textContent.trim();
+      
+      console.log('  price text:', priceText);
+      
+      prices[key] = parseNumber(priceText);
+      console.log('  EXTRACTED:', key, '=', prices[key]);
+    });
+    
+    console.log('=== ' + label + ' PRICES SUMMARY ===');
+    console.log(JSON.stringify(prices, null, 2));
+    
+    return prices;
+  };
 
-    console.log('HousePulse: Data extracted', result);
+  // Main extraction
+  const extractData = async () => {
+    console.log('Step 1: Starting extraction...');
+    
+    const table = findPriceTable();
+    
+    if (!table) {
+      throw new Error('Could not find the median price table. Make sure the "Median price snapshot" section is visible.');
+    }
+    
+    console.log('Step 2: Found table, extracting Buy prices...');
+
+    const result = {
+      house: {
+        '2': { buyPrice: 0, rentPrice: 0 },
+        '3': { buyPrice: 0, rentPrice: 0 },
+        '4+': { buyPrice: 0, rentPrice: 0 }
+      },
+      unit: {
+        '1': { buyPrice: 0, rentPrice: 0 },
+        '2': { buyPrice: 0, rentPrice: 0 },
+        '3': { buyPrice: 0, rentPrice: 0 }
+      }
+    };
+
+    const section = table.closest('section') || table.parentElement;
+    
+    console.log('=== EXTRACTING BUY PRICES ===');
+    const buyPrices = extractPricesFromTable(table, 'Buy');
+    
+    Object.keys(buyPrices).forEach(key => {
+      const parts = key.split('-');
+      const propType = parts[0];
+      const beds = parts[1];
+      const bedKey = beds === '4' ? '4+' : beds;
+      if (result[propType] && result[propType][bedKey]) {
+        result[propType][bedKey].buyPrice = buyPrices[key];
+      }
+    });
+
+    console.log('Step 3: Buy prices extracted:', JSON.stringify(buyPrices, null, 2));
+
+    const allButtons = section.querySelectorAll('button[role="tab"]');
+    let rentButton = null;
+    let buyButton = null;
+    
+    allButtons.forEach(btn => {
+      const text = btn.textContent.trim();
+      console.log('Found button:', text, '- selected:', btn.getAttribute('aria-selected'));
+      if (text.toLowerCase().includes('rent')) rentButton = btn;
+      if (text.toLowerCase().includes('buy')) buyButton = btn;
+    });
+
+    if (!rentButton) {
+      console.log('Could not find Rent button in section, checking all buttons...');
+      document.querySelectorAll('button').forEach(btn => {
+        const text = btn.textContent.trim().toLowerCase();
+        if (text === 'rent' || text.includes('rent')) {
+          console.log('Found rent button elsewhere:', btn);
+          rentButton = btn;
+        }
+      });
+    }
+
+    if (rentButton) {
+      console.log('Step 4: Found Rent button, clicking it...');
+      rentButton.click();
+      
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const rentTable = findPriceTable();
+      
+      if (rentTable) {
+        console.log('Step 5: Found table after Rent click, extracting...');
+        const rentPrices = extractPricesFromTable(rentTable, 'Rent');
+        
+        Object.keys(rentPrices).forEach(key => {
+          const parts = key.split('-');
+          const propType = parts[0];
+          const beds = parts[1];
+          const bedKey = beds === '4' ? '4+' : beds;
+          if (result[propType] && result[propType][bedKey]) {
+            result[propType][bedKey].rentPrice = rentPrices[key];
+          }
+        });
+
+        console.log('Step 6: Rent prices extracted:', JSON.stringify(rentPrices, null, 2));
+      } else {
+        console.log('ERROR: Could not find table after clicking Rent!');
+      }
+
+      if (buyButton) {
+        console.log('Switching back to Buy tab...');
+        buyButton.click();
+      }
+    } else {
+      console.log('WARNING: No Rent button found!');
+    }
+
+    console.log('Step 7: Extraction complete!');
+    return result;
+  };
+
+  // Execute
+  extractData().then(bedroomData => {
+    console.log('=== FINAL DATA ===');
+    console.log(JSON.stringify(bedroomData, null, 2));
+
+    const calculateYield = (buyPrice, rentPrice) => {
+      if (buyPrice <= 0 || rentPrice <= 0) return 0;
+      return ((rentPrice * 52) / buyPrice) * 100;
+    };
+
+    const result = {
+      suburb: suburb,
+      state: state,
+      postcode: postcode,
+      isHot: isHotPage,
+      source: window.location.href,
+      date: new Date().toISOString().split('T')[0],
+      house: {
+        bedrooms: {
+          '2': bedroomData.house['2'],
+          '3': bedroomData.house['3'],
+          '4+': bedroomData.house['4+']
+        },
+        yield: {
+          '2': calculateYield(bedroomData.house['2'].buyPrice, bedroomData.house['2'].rentPrice),
+          '3': calculateYield(bedroomData.house['3'].buyPrice, bedroomData.house['3'].rentPrice),
+          '4+': calculateYield(bedroomData.house['4+'].buyPrice, bedroomData.house['4+'].rentPrice)
+        }
+      },
+      unit: {
+        bedrooms: {
+          '1': bedroomData.unit['1'],
+          '2': bedroomData.unit['2'],
+          '3': bedroomData.unit['3']
+        },
+        yield: {
+          '1': calculateYield(bedroomData.unit['1'].buyPrice, bedroomData.unit['1'].rentPrice),
+          '2': calculateYield(bedroomData.unit['2'].buyPrice, bedroomData.unit['2'].rentPrice),
+          '3': calculateYield(bedroomData.unit['3'].buyPrice, bedroomData.unit['3'].rentPrice)
+        }
+      }
+    };
+
+    // Copy to clipboard
+    const jsonString = JSON.stringify(result, null, 2);
+    console.log('Copying to clipboard:', jsonString);
+    navigator.clipboard.writeText(jsonString).then(() => {
+      // Show detailed notification
+      const houseData = Object.entries(bedroomData.house)
+        .filter(([k, v]) => v.buyPrice > 0 || v.rentPrice > 0)
+        .map(([k, v]) => `${k}br: $${v.buyPrice.toLocaleString()}/$${v.rentPrice}/wk`)
+        .join('<br>');
+      
+      const unitData = Object.entries(bedroomData.unit)
+        .filter(([k, v]) => v.buyPrice > 0 || v.rentPrice > 0)
+        .map(([k, v]) => `${k}br: $${v.buyPrice.toLocaleString()}/$${v.rentPrice}/wk`)
+        .join('<br>');
+      
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #10b981;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        font-family: sans-serif;
+        font-size: 13px;
+        max-width: 450px;
+        max-height: 80vh;
+        overflow-y: auto;
+      `;
+      
+      notification.innerHTML = `
+        <strong style="font-size: 16px;">✓ Data Extracted!</strong><br>
+        <strong>${suburb}, ${state} ${postcode}</strong><br>
+        <div style="margin-top: 10px; font-size: 12px; line-height: 1.5;">
+          <strong>Houses:</strong><br>${houseData || 'No data'}<br><br>
+          <strong>Units:</strong><br>${unitData || 'No data'}
+        </div>
+        <small style="opacity: 0.9; margin-top: 10px; display: block;">
+          ${isHotPage ? '🔥 Hot Suburb! ' : ''}Copied to clipboard!
+        </small>
+      `;
+      
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 10000);
+      
+      console.log('Success! Data copied to clipboard');
+    });
   }).catch(err => {
-    alert('Failed to copy to clipboard. Data:\n\n' + jsonString);
+    console.error('Error:', err);
+    alert('Error: ' + err.message + '\n\nCheck browser console (F12) for debug info.');
   });
 })();

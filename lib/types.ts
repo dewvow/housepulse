@@ -14,9 +14,17 @@ export type StateCode = typeof AUSTRALIAN_STATES[number]['code']
 export const BEDROOM_OPTIONS = ['2', '3', '4+'] as const
 export type BedroomType = typeof BEDROOM_OPTIONS[number]
 
-export interface BedroomData {
-  salePrice: number
-  rent: number
+export const PROPERTY_TYPES = ['house', 'unit'] as const
+export type PropertyType = typeof PROPERTY_TYPES[number]
+
+export interface BedroomPriceData {
+  buyPrice: number
+  rentPrice: number
+}
+
+export interface PropertyData {
+  bedrooms: Record<BedroomType, BedroomPriceData>
+  yield: Record<BedroomType, number>
 }
 
 export interface SuburbData {
@@ -25,8 +33,8 @@ export interface SuburbData {
   state: StateCode
   postcode: string
   isHot: boolean
-  bedrooms: Record<BedroomType, BedroomData>
-  yield: Record<BedroomType, number>
+  house: PropertyData
+  unit: PropertyData
   dateAdded: string
 }
 
@@ -39,6 +47,7 @@ export interface SuburbListItem {
 export interface FilterState {
   states: StateCode[]
   bedrooms: BedroomType[]
+  propertyTypes: PropertyType[]
   maxPrice: number | null
   minYield: number | null
   hotOnly: boolean

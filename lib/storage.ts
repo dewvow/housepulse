@@ -1,52 +1,52 @@
-'use client'
+import { SuburbData, StateCode, BedroomType, PropertyType, FilterState } from './types'
 
-import { SuburbData, StateCode, BedroomType, FilterState } from './types'
-
-const STORAGE_KEY = 'housepulse_suburbs'
-const HOT_STORAGE_KEY = 'housepulse_hot_suburbs'
-
-export function getSuburbs(): SuburbData[] {
-  if (typeof window === 'undefined') return []
-  const data = localStorage.getItem(STORAGE_KEY)
-  return data ? JSON.parse(data) : []
-}
-
-export function saveSuburb(suburb: SuburbData): void {
-  const suburbs = getSuburbs()
-  const existingIndex = suburbs.findIndex(s => s.id === suburb.id)
-  if (existingIndex >= 0) {
-    suburbs[existingIndex] = suburb
-  } else {
-    suburbs.push(suburb)
+export async function getSuburbs(): Promise<SuburbData[]> {
+  try {
+    const response = await fetch('/api/suburbs')
+    if (!response.ok) throw new Error('Failed to fetch suburbs')
+    return await response.json()
+  } catch (error) {
+    console.error('Error fetching suburbs:', error)
+    return []
   }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(suburbs))
 }
 
-export function deleteSuburb(id: string): void {
-  const suburbs = getSuburbs().filter(s => s.id !== id)
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(suburbs))
+export async function saveSuburb(suburb: SuburbData): Promise<void> {
+  try {
+    const response = await fetch('/api/suburbs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(suburb),
+    })
+    if (!response.ok) throw new Error('Failed to save suburb')
+  } catch (error) {
+    console.error('Error saving suburb:', error)
+    throw error
+  }
 }
 
-export function clearAllSuburbs(): void {
-  localStorage.removeItem(STORAGE_KEY)
+export async function deleteSuburb(id: string): Promise<void> {
+  try {
+    const response = await fetch(`/api/suburbs?id=${id}`, {
+      method: 'DELETE',
+    })
+    if (!response.ok) throw new Error('Failed to delete suburb')
+  } catch (error) {
+    console.error('Error deleting suburb:', error)
+    throw error
+  }
 }
 
-export function getHotSuburbs(): string[] {
-  if (typeof window === 'undefined') return []
-  const data = localStorage.getItem(HOT_STORAGE_KEY)
-  return data ? JSON.parse(data) : []
-}
-
-export function addHotSuburb(suburbId: string): void {
-  const hot = new Set(getHotSuburbs())
-  hot.add(suburbId)
-  localStorage.setItem(HOT_STORAGE_KEY, JSON.stringify(Array.from(hot)))
-}
-
-export function removeHotSuburb(suburbId: string): void {
-  const hot = new Set(getHotSuburbs())
-  hot.delete(suburbId)
-  localStorage.setItem(HOT_STORAGE_KEY, JSON.stringify(Array.from(hot)))
+export async function clearAllSuburbs(): Promise<void> {
+  try {
+    const response = await fetch('/api/suburbs', {
+      method: 'PUT',
+    })
+    if (!response.ok) throw new Error('Failed to clear suburbs')
+  } catch (error) {
+    console.error('Error clearing suburbs:', error)
+    throw error
+  }
 }
 
 export function filterSuburbs(
@@ -54,6 +54,11 @@ export function filterSuburbs(
   filters: FilterState
 ): SuburbData[] {
   return suburbs.filter(suburb => {
+    // Skip suburbs with missing house/unit data
+    if (!suburb.house || !suburb.unit) {
+      return false
+    }
+
     if (filters.states.length > 0 && !filters.states.includes(suburb.state)) {
       return false
     }
@@ -62,37 +67,94 @@ export function filterSuburbs(
       return false
     }
 
+    const propertyTypes = filters.propertyTypes.length > 0 ? filters.propertyTypes : (['house', 'unit'] as PropertyType[])
     const bedroomValues = filters.bedrooms.length > 0 ? filters.bedrooms : (['2', '3', '4+'] as BedroomType[])
 
-    const hasMatchingBedroom = bedroomValues.some(beds => {
-      const price = suburb.bedrooms[beds]?.salePrice || 0
-      const yieldVal = suburb.yield[beds] || 0
+    // Check if any combination of property type and bedroom matches filters
+    const hasMatchingData = propertyTypes.some(propType => {
+      const propData = suburb[propType]
+      return bedroomValues.some(beds => {
+        const price = propData.bedrooms[beds]?.buyPrice || 0
+        const yieldVal = propData.yield[beds] || 0
 
-      const priceMatch = !filters.maxPrice || price <= filters.maxPrice
-      const yieldMatch = !filters.minYield || yieldVal >= filters.minYield
+        const priceMatch = !filters.maxPrice || price <= filters.maxPrice
+        const yieldMatch = !filters.minYield || yieldVal >= filters.minYield
 
-      return priceMatch && yieldMatch
+        return priceMatch && yieldMatch && price > 0
+      })
     })
 
-    return hasMatchingBedroom
+    return hasMatchingData
   })
 }
 
 export function exportToCSV(suburbs: SuburbData[]): string {
-  const headers = ['Suburb', 'State', 'Postcode', 'Hot', 'Beds', 'Sale Price', 'Weekly Rent', 'Yield %', 'Date Added']
-  const rows = suburbs.flatMap(suburb =>
-    (['2', '3', '4+'] as BedroomType[]).map(beds => [
-      suburb.suburb,
-      suburb.state,
-      suburb.postcode,
-      suburb.isHot ? 'Yes' : 'No',
-      beds,
-      suburb.bedrooms[beds]?.salePrice || '',
-      suburb.bedrooms[beds]?.rent || '',
-      suburb.yield[beds]?.toFixed(2) || '',
-      suburb.dateAdded,
-    ])
-  )
+  const headers = ['Suburb', 'State', 'Postcode', 'Hot', 'Property Type', 'Beds', 'Buy Price', 'Weekly Rent', 'Yield %', 'Date Added']
+  const rows: (string | number)[][] = []
+  
+  suburbs.forEach(suburb => {
+    // Skip suburbs with missing house/unit data
+    if (!suburb.house || !suburb.unit) {
+      console.warn('Skipping suburb in CSV export - missing house/unit data:', suburb.suburb)
+      return
+    }
+
+    // House data
+    ;(['2', '3', '4+'] as BedroomType[]).forEach((beds: BedroomType) => {
+      rows.push([
+        suburb.suburb,
+        suburb.state,
+        suburb.postcode,
+        suburb.isHot ? 'Yes' : 'No',
+        'House',
+        beds,
+        suburb.house.bedrooms[beds]?.buyPrice || '',
+        suburb.house.bedrooms[beds]?.rentPrice || '',
+        suburb.house.yield[beds]?.toFixed(2) || '',
+        suburb.dateAdded,
+      ])
+    })
+    
+    // Unit data
+    ;(['2', '3', '4+'] as BedroomType[]).forEach((beds: BedroomType) => {
+      rows.push([
+        suburb.suburb,
+        suburb.state,
+        suburb.postcode,
+        suburb.isHot ? 'Yes' : 'No',
+        'Unit',
+        beds,
+        suburb.unit.bedrooms[beds]?.buyPrice || '',
+        suburb.unit.bedrooms[beds]?.rentPrice || '',
+        suburb.unit.yield[beds]?.toFixed(2) || '',
+        suburb.dateAdded,
+      ])
+    })
+  })
 
   return [headers, ...rows].map(row => row.join(',')).join('\n')
+}
+
+// Hot suburbs are now stored in the suburb data itself via isHot field
+export async function getHotSuburbs(): Promise<string[]> {
+  const suburbs = await getSuburbs()
+  return suburbs.filter(s => s.isHot).map(s => s.id)
+}
+
+export async function addHotSuburb(suburbId: string): Promise<void> {
+  const suburbs = await getSuburbs()
+  const suburb = suburbs.find(s => s.id === suburbId)
+  if (suburb) {
+    suburb.isHot = true
+    await saveSuburb(suburb)
+  }
+}
+
+export async function removeHotSuburb(suburbId: string): Promise<void> {
+  const suburbs = await getSuburbs()
+  const suburb = suburbs.find(s => s.id === suburbId)
+  if (suburb) {
+    suburb.isHot = false
+    await saveSuburb(suburb)
+  }
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { SuburbData, StateCode } from '@/lib/types'
 import { getHotSuburbs } from '@/lib/storage'
 
@@ -10,7 +11,15 @@ interface HotSuburbsProps {
 }
 
 export function HotSuburbs({ selectedState, allSuburbs, onSelectSuburb }: HotSuburbsProps) {
-  const hotIds = typeof window !== 'undefined' ? getHotSuburbs() : []
+  const [hotIds, setHotIds] = useState<string[]>([])
+  
+  useEffect(() => {
+    const fetchHotSuburbs = async () => {
+      const ids = await getHotSuburbs()
+      setHotIds(ids)
+    }
+    fetchHotSuburbs()
+  }, [allSuburbs])
   
   const hotSuburbs = allSuburbs.filter(s => {
     if (s.isHot || hotIds.includes(s.id)) {

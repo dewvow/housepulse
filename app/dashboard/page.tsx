@@ -14,15 +14,19 @@ export default function Dashboard() {
   const [filters, setFilters] = useState<FilterState>({
     states: [],
     bedrooms: [],
+    propertyTypes: [],
     maxPrice: null,
     minYield: null,
     hotOnly: false,
   })
 
   useEffect(() => {
-    const data = getSuburbs()
-    setSuburbs(data)
-    setFilteredSuburbs(data)
+    const fetchData = async () => {
+      const data = await getSuburbs()
+      setSuburbs(data)
+      setFilteredSuburbs(data)
+    }
+    fetchData()
   }, [])
 
   useEffect(() => {
@@ -30,8 +34,8 @@ export default function Dashboard() {
     setFilteredSuburbs(filtered)
   }, [suburbs, filters])
 
-  const handleDataChange = () => {
-    const data = getSuburbs()
+  const handleDataChange = async () => {
+    const data = await getSuburbs()
     setSuburbs(data)
   }
 

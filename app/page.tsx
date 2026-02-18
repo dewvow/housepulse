@@ -8,7 +8,7 @@ import { HotSuburbs } from '@/components/HotSuburbs'
 import { DataInput } from '@/components/DataInput'
 import { SuburbListItem, StateCode, SuburbData } from '@/lib/types'
 import { loadSuburbs, getSuburbsByState } from '@/lib/suburbs'
-import { getSuburbs, addHotSuburb } from '@/lib/storage'
+import { getSuburbs } from '@/lib/storage'
 
 export default function Home() {
   const [suburbs, setSuburbs] = useState<SuburbListItem[]>([])
@@ -17,11 +17,16 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    loadSuburbs().then(data => {
-      setSuburbs(data)
+    const fetchData = async () => {
+      const [listData, savedData] = await Promise.all([
+        loadSuburbs(),
+        getSuburbs()
+      ])
+      setSuburbs(listData)
+      setSavedSuburbs(savedData)
       setLoading(false)
-    })
-    setSavedSuburbs(getSuburbs())
+    }
+    fetchData()
   }, [])
 
   const handleSuburbSelect = (suburb: SuburbListItem) => {
@@ -29,11 +34,44 @@ export default function Home() {
     window.open(url, '_blank')
   }
 
-  const handleSuburbAdded = () => {
-    setSavedSuburbs(getSuburbs())
+  const handleSuburbAdded = async () => {
+    const data = await getSuburbs()
+    setSavedSuburbs(data)
   }
 
   const filteredSuburbs = selectedState ? getSuburbsByState(suburbs, selectedState) : suburbs
+
+  // Calculate average yield across all property types and bedrooms
+  const calculateAverageYield = () => {
+    if (savedSuburbs.length === 0) return '0.00'
+    
+    let totalYield = 0
+    let count = 0
+    
+    savedSuburbs.forEach(suburb => {
+      if (!suburb.house || !suburb.unit) {
+        console.warn('Suburb missing house/unit data:', suburb.suburb)
+        return
+      }
+      
+      // House yields
+      Object.values(suburb.house.yield).forEach(y => {
+        if (y > 0) {
+          totalYield += y
+          count++
+        }
+      })
+      // Unit yields
+      Object.values(suburb.unit.yield).forEach(y => {
+        if (y > 0) {
+          totalYield += y
+          count++
+        }
+      })
+    })
+    
+    return count > 0 ? (totalYield / count).toFixed(2) : '0.00'
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -126,9 +164,7 @@ export default function Home() {
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm">
             <div className="text-3xl font-bold text-green-600">
-              {savedSuburbs.length > 0 
-                ? (savedSuburbs.reduce((acc, s) => acc + Object.values(s.yield).reduce((a, b) => a + b, 0) / 3, 0) / savedSuburbs.length).toFixed(2)
-                : '0.00'}%
+              {calculateAverageYield()}%
             </div>
             <div className="text-gray-600">Average Yield</div>
           </div>
