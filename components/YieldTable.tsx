@@ -14,6 +14,17 @@ interface YieldTableProps {
   onDataChange: () => void
 }
 
+type FlattenedRow = {
+  suburb: SuburbData
+  propertyType: PropertyType
+  beds: BedroomType
+  bedIndex: number
+  buyPrice: number
+  rentPrice: number
+  yield: number
+  isNewSuburb: boolean
+}
+
 export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) {
   const [sortField, setSortField] = useState<SortField>('suburb')
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
@@ -34,62 +45,54 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
     }
   }
 
-  // Flatten data to show house and unit separately, respecting filters
-  const flattenedData = useMemo(() => {
-    const data = suburbs.flatMap((suburb): typeof rows => {
-    const rows: Array<{
-      suburb: SuburbData
-      propertyType: PropertyType
-      beds: BedroomType
-      bedIndex: number
-      buyPrice: number
-      rentPrice: number
-      yield: number
-    }> = []
-    
-    // Skip suburbs with missing data
-    if (!suburb.house || !suburb.unit) {
-      return rows
-    }
-    
-    // Use filtered property types if specified, otherwise show all
-    const propertyTypesToShow = filters.propertyTypes.length > 0 
-      ? filters.propertyTypes 
-      : (['house', 'unit'] as PropertyType[])
-    
-    // Use filtered bedroom options if specified, otherwise show all
-    const bedroomsToShow = filters.bedrooms.length > 0
-      ? filters.bedrooms
-      : (['2', '3', '4+'] as BedroomType[])
-    
-    propertyTypesToShow.forEach((propType) => {
-      bedroomsToShow.forEach((beds, bedIndex) => {
-        const data = suburb[propType]?.bedrooms?.[beds]
-        if (!data) {
-          return
-        }
-        const rowYield = suburb[propType]?.yield?.[beds] || 0
-        
-        if (filters.minYield && rowYield < filters.minYield) {
-          return
-        }
-        
-        rows.push({
-          suburb,
-          propertyType: propType,
-          beds,
-          bedIndex,
-          buyPrice: data.buyPrice,
-          rentPrice: data.rentPrice,
-          yield: rowYield,
-        })
-      })
-    })
-    
-    return rows
-    })
+  const flattenedData = useMemo((): FlattenedRow[] => {
+    const seenSuburbIds = new Set<string>()
+    const rows: FlattenedRow[] = []
 
-    return [...data].sort((a, b) => {
+    for (const suburb of suburbs) {
+      if (!suburb.house || !suburb.unit) {
+        continue
+      }
+
+      const propertyTypesToShow = filters.propertyTypes.length > 0
+        ? filters.propertyTypes
+        : (['house', 'unit'] as PropertyType[])
+
+      const bedroomsToShow = filters.bedrooms.length > 0
+        ? filters.bedrooms
+        : (['2', '3', '4+'] as BedroomType[])
+
+      for (const propType of propertyTypesToShow) {
+        for (let i = 0; i < bedroomsToShow.length; i++) {
+          const beds = bedroomsToShow[i]
+          const data = suburb[propType]?.bedrooms?.[beds]
+          if (!data) {
+            continue
+          }
+          const rowYield = suburb[propType]?.yield?.[beds] || 0
+
+          if (filters.minYield && rowYield < filters.minYield) {
+            continue
+          }
+
+          const isNewSuburb = !seenSuburbIds.has(suburb.id)
+          seenSuburbIds.add(suburb.id)
+
+          rows.push({
+            suburb,
+            propertyType: propType,
+            beds,
+            bedIndex: i,
+            buyPrice: data.buyPrice,
+            rentPrice: data.rentPrice,
+            yield: rowYield,
+            isNewSuburb,
+          })
+        }
+      }
+    }
+
+    rows.sort((a, b) => {
       let comparison = 0
       if (sortField === 'suburb') {
         comparison = a.suburb.suburb.localeCompare(b.suburb.suburb)
@@ -100,6 +103,8 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
       }
       return sortDirection === 'asc' ? comparison : -comparison
     })
+
+    return rows
   }, [suburbs, filters, sortField, sortDirection])
 
   return (
@@ -125,14 +130,13 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
             </tr>
           </thead>
           <tbody>
-            {flattenedData.map((row, index) => {
+            {flattenedData.map((row) => {
               const hasData = row.buyPrice > 0 || row.rentPrice > 0
-              const isNewSuburb = index === 0 || flattenedData[index - 1].suburb.id !== row.suburb.id
-              
+
               return (
                 <tr 
                   key={`${row.suburb.id}-${row.propertyType}-${row.beds}`} 
-                  className={`border-t hover:bg-gray-50 ${!hasData ? 'opacity-50' : ''} ${isNewSuburb ? 'border-t-2 border-gray-300' : ''}`}
+                  className={`border-t hover:bg-gray-50 ${!hasData ? 'opacity-50' : ''} ${row.isNewSuburb ? 'border-t-2 border-gray-300' : ''}`}
                 >
                   <td className="px-4 py-3 text-sm">
                     <div className="font-medium">{row.suburb.suburb}</div>
@@ -159,7 +163,7 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
                     {hasData ? formatPercentage(row.yield) : '-'}
                   </td>
                   <td className="px-4 py-3 text-sm">
-                    {isNewSuburb && (
+                    {row.isNewSuburb && (
                       <button
                         onClick={() => handleDelete(row.suburb.id)}
                         className="text-red-600 hover:text-red-800 text-sm"
