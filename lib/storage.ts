@@ -53,13 +53,28 @@ export function filterSuburbs(
   suburbs: SuburbData[],
   filters: FilterState
 ): SuburbData[] {
+  // Check if any filters are active
+  const hasActiveFilters =
+    filters.states.length > 0 ||
+    filters.bedrooms.length > 0 ||
+    filters.propertyTypes.length > 0 ||
+    filters.maxPrice !== null ||
+    filters.minYield !== null ||
+    filters.hotOnly
+
+  // If no filters are active, return all suburbs
+  if (!hasActiveFilters) {
+    return suburbs
+  }
+
+  // Apply filters when they are active
   return suburbs.filter(suburb => {
     // Show hot suburbs even without price data (for syncing)
     if (suburb.isHot && filters.hotOnly) {
       return true
     }
 
-    // Skip suburbs with missing house/unit data
+    // Skip suburbs with missing house/unit data when filtering
     if (!suburb.house || !suburb.unit) {
       return false
     }

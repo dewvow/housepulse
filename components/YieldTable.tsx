@@ -166,11 +166,6 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
 
     for (const suburb of suburbs) {
       const yields = getYields(suburb)
-      
-      // Allow hot suburbs to be shown even without yield data
-      const hasData = suburb.house && suburb.unit
-      const shouldShow = yields.length > 0 || (suburb.isHot && filters.hotOnly)
-      if (!shouldShow) continue
 
       const isNewSuburb = !seenSuburbIds.has(suburb.id)
       seenSuburbIds.add(suburb.id)
