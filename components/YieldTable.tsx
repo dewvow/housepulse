@@ -58,6 +58,7 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
   const [demographicsLoading, setDemographicsLoading] = useState<Set<string>>(new Set())
   const [demographicsCache, setDemographicsCache] = useState<Map<string, SuburbDemographics>>(new Map())
+  const [demographicsError, setDemographicsError] = useState<Set<string>>(new Set())
 
   const toggleExpand = useCallback(async (id: string, suburb: SuburbData) => {
     setExpandedRows(prev => {
@@ -71,12 +72,24 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
           setDemographicsCache(prev => new Map(prev).set(id, suburb.demographics!))
         } else if (suburb.sscCode && suburb.postcode && suburb.demographics === undefined) {
           setDemographicsLoading(prev => new Set(prev).add(id))
+          setDemographicsError(prev => {
+            const next = new Set(prev)
+            next.delete(id)
+            return next
+          })
           
           fetchDemographics(suburb.sscCode, suburb.postcode, suburb.medianIncome, suburb.population)
             .then(demo => {
               if (demo) {  // Only cache if we got data
                 setDemographicsCache(prev => new Map(prev).set(id, demo))
+              } else {
+                // Fetch failed - mark error so we can show error message
+                setDemographicsError(prev => new Set(prev).add(id))
               }
+            })
+            .catch(() => {
+              // Network error - mark error
+              setDemographicsError(prev => new Set(prev).add(id))
             })
             .finally(() => {
               setDemographicsLoading(prev => {
@@ -244,6 +257,7 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
                 isPasting={pastingId === row.suburb.id}
                 demographics={demographicsCache.get(row.suburb.id)}
                 isLoadingDemographics={demographicsLoading.has(row.suburb.id)}
+                hasDemographicsError={demographicsError.has(row.suburb.id)}
                 onToggleExpand={() => toggleExpand(row.suburb.id, row.suburb)}
                 onDelete={() => handleDelete(row.suburb.id)}
                 onPaste={() => handlePasteFromClipboard(row.suburb)}
@@ -302,6 +316,7 @@ interface SuburbRowProps {
   isPasting: boolean
   demographics?: SuburbDemographics
   isLoadingDemographics: boolean
+  hasDemographicsError: boolean
   onToggleExpand: () => void
   onDelete: () => void
   onPaste: () => void
@@ -313,6 +328,7 @@ function SuburbRow({
   isPasting,
   demographics,
   isLoadingDemographics,
+  hasDemographicsError,
   onToggleExpand, 
   onDelete, 
   onPaste 
@@ -399,6 +415,7 @@ function SuburbRow({
           yields={row.yields} 
           demographics={demographics}
           isLoadingDemographics={isLoadingDemographics}
+          hasDemographicsError={hasDemographicsError}
         />
       )}
     </>
@@ -423,9 +440,10 @@ interface ExpandedRowProps {
   yields: YieldEntry[]
   demographics?: SuburbDemographics
   isLoadingDemographics: boolean
+  hasDemographicsError: boolean
 }
 
-function ExpandedRow({ suburb, yields, demographics, isLoadingDemographics }: ExpandedRowProps) {
+function ExpandedRow({ suburb, yields, demographics, isLoadingDemographics, hasDemographicsError }: ExpandedRowProps) {
   return (
     <tr className="bg-gray-50">
       <td colSpan={8} className="px-4 py-3">
@@ -446,6 +464,8 @@ function ExpandedRow({ suburb, yields, demographics, isLoadingDemographics }: Ex
             </div>
             {isLoadingDemographics ? (
               <div className="text-sm text-gray-400">Loading demographics from ABS...</div>
+            ) : hasDemographicsError ? (
+              <div className="text-sm text-red-500">Failed to load demographics from ABS Census. The postcode may not have data available.</div>
             ) : demographics ? (
               <div className="grid grid-cols-5 gap-4 text-sm">
                 <div>

@@ -45,7 +45,7 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
     const distance = details ? calculateDistance(stateCode, details.lat, details.lng) : 0
     
     const demographics = details?.sscCode 
-      ? await fetchDemographics(details.sscCode, data.postcode, details.medianIncome, details.population)
+      ? await fetchDemographics(details.sscCode, data.postcode, details.medianIncome, details.population) ?? undefined
       : undefined
 
     const nominatedList = data.nominatedFor || []
@@ -134,7 +134,7 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
     const distance = details ? calculateDistance(state, details.lat, details.lng) : 0
     
     const demographics = details?.sscCode 
-      ? await fetchDemographics(details.sscCode, postcode, details.medianIncome, details.population)
+      ? await fetchDemographics(details.sscCode, postcode, details.medianIncome, details.population) ?? undefined
       : undefined
 
     const nominatedList = nominatedFor ? nominatedFor.split(',').map(s => s.trim()).filter(Boolean) : []

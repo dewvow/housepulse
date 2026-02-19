@@ -160,12 +160,9 @@ export async function fetchDemographics(
   postcode: string,
   medianIncome?: number,
   population?: number
-): Promise<SuburbDemographics | undefined> {
-  // Check cache first (use postcode as key since that's what we query)
-  const cacheKey = `poa_${postcode}`
-  if (DEMOGRAPHICS_CACHE.has(cacheKey)) {
-    return DEMOGRAPHICS_CACHE.get(cacheKey)!
-  }
+): Promise<SuburbDemographics | null | undefined> {
+  // Skip caching for now - always fetch fresh to debug issues
+  // The cache in YieldTable.tsx handles local storage-level caching
 
   try {
     // Fetch medians from API and language/occupation from pre-processed data
@@ -186,16 +183,15 @@ export async function fetchDemographics(
         source: 'abs-api'
       }
 
-      DEMOGRAPHICS_CACHE.set(cacheKey, demographics)
       return demographics
     }
 
-    // If ABS API failed, return undefined (no derived fallback)
-    return undefined
+    // ABS API failed
+    return null
 
   } catch (error) {
     console.error(`Failed to fetch demographics for postcode ${postcode}:`, error)
-    return undefined
+    return null
   }
 }
 
