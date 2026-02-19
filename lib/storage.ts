@@ -54,6 +54,11 @@ export function filterSuburbs(
   filters: FilterState
 ): SuburbData[] {
   return suburbs.filter(suburb => {
+    // Show hot suburbs even without price data (for syncing)
+    if (suburb.isHot && filters.hotOnly) {
+      return true
+    }
+
     // Skip suburbs with missing house/unit data
     if (!suburb.house || !suburb.unit) {
       return false
@@ -89,7 +94,7 @@ export function filterSuburbs(
 }
 
 export function exportToCSV(suburbs: SuburbData[]): string {
-  const headers = ['Suburb', 'State', 'Postcode', 'Hot', 'Property Type', 'Beds', 'Buy Price', 'Weekly Rent', 'Yield %', 'Date Added']
+  const headers = ['Suburb', 'State', 'Postcode', 'Hot', 'Property Type', 'Beds', 'Buy Price', 'Weekly Rent', 'Yield %', 'Date Added', 'Last Updated']
   const rows: (string | number)[][] = []
   
   suburbs.forEach(suburb => {
@@ -112,6 +117,7 @@ export function exportToCSV(suburbs: SuburbData[]): string {
         suburb.house.bedrooms[beds]?.rentPrice || '',
         suburb.house.yield[beds]?.toFixed(2) || '',
         suburb.dateAdded,
+        suburb.lastUpdated || '',
       ])
     })
     
@@ -128,6 +134,7 @@ export function exportToCSV(suburbs: SuburbData[]): string {
         suburb.unit.bedrooms[beds]?.rentPrice || '',
         suburb.unit.yield[beds]?.toFixed(2) || '',
         suburb.dateAdded,
+        suburb.lastUpdated || '',
       ])
     })
   })

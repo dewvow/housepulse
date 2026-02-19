@@ -36,6 +36,7 @@ export interface SuburbData {
   house: PropertyData
   unit: PropertyData
   dateAdded: string
+  lastUpdated: string
 }
 
 export interface SuburbListItem {
