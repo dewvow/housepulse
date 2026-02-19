@@ -337,7 +337,7 @@
       console.log('Success! Data copied to clipboard');
       
       // Close the tab after a brief delay so user sees the notification
-      setTimeout(() => window.close(), 2000);
+      setTimeout(() => window.close(), 1000);
     });
   }).catch(err => {
     console.error('Error:', err);

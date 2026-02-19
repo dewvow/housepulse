@@ -117,15 +117,16 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
   }, [onDataChange])
 
   const handleSort = useCallback((field: SortField) => {
-    setSortField(prev => {
-      if (prev === field) {
-        setSortDirection(d => d === 'asc' ? 'desc' : 'asc')
-      } else {
-        setSortDirection('asc')
-      }
-      return field
-    })
-  }, [])
+    const isSameField = sortField === field
+    const newDirection = isSameField
+      ? (sortDirection === 'asc' ? 'desc' : 'asc')
+      : (field === 'yield' ? 'desc' : 'asc')
+    
+    setSortDirection(newDirection)
+    if (!isSameField) {
+      setSortField(field)
+    }
+  }, [sortField, sortDirection])
 
   const getYields = useCallback((suburb: SuburbData): YieldEntry[] => {
     if (!suburb.house || !suburb.unit) return []
