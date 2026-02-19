@@ -320,14 +320,14 @@
       `;
       
       notification.innerHTML = `
-        <strong style="font-size: 16px;">✓ Data Extracted!</strong><br>
+        <strong style="font-size: 16px;">[OK] Data Extracted!</strong><br>
         <strong>${suburb}, ${state} ${postcode}</strong><br>
         <div style="margin-top: 10px; font-size: 12px; line-height: 1.5;">
           <strong>Houses:</strong><br>${houseData || 'No data'}<br><br>
           <strong>Units:</strong><br>${unitData || 'No data'}
         </div>
         <small style="opacity: 0.9; margin-top: 10px; display: block;">
-          ${isHotPage ? '🔥 Hot Suburb! ' : ''}Copied to clipboard!
+          ${isHotPage ? '[HOT] Hot Suburb! ' : ''}Copied to clipboard!
         </small>
       `;
       
@@ -335,9 +335,12 @@
       setTimeout(() => notification.remove(), 10000);
       
       console.log('Success! Data copied to clipboard');
+      
+      // Close the tab after a brief delay so user sees the notification
+      setTimeout(() => window.close(), 2000);
     });
   }).catch(err => {
     console.error('Error:', err);
-    alert('Error: ' + err.message + '\n\nCheck browser console (F12) for debug info.');
+    alert('Error: ' + err.message + ' - Check browser console (F12) for debug info.');
   });
 })();

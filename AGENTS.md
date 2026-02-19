@@ -69,8 +69,10 @@ When debugging bookmarklets that extract data from websites (like realestate.com
 
 1. Minify the bookmarklet code using:
    ```bash
-   cat public/bookmarklet.js | tr '\n' ' ' | sed 's/  */ /g' | sed 's/\/\*[^*]*\*\+\([^\/][^*]*\*\+\)*\// /g' | sed 's/  */ /g'
+   cat public/bookmarklet.js | sed '1,2d' | sed 's/\/\/.*$//' | tr '\n' ' ' | sed 's/  */ /g' | sed 's/\/\*[^*]*\*\+\([^\/][^*]*\*\+\)*\// /g' | sed 's/  */ /g' | sed 's/^ *//' | sed 's/ *$//'
    ```
+   
+   **Important**: The `sed 's/\/\/.*$//'` removes single-line comments BEFORE converting newlines to spaces. If comments aren't removed first, they'll consume the rest of the code when newlines become spaces, causing "Unexpected end of input" errors.
 2. Replace the bookmarklet code in INSTRUCTIONS.md (after "URL: Copy and paste this entire line:")
 3. The INSTRUCTIONS.md contains the minified bookmarklet that users copy-paste
 4. Keep both files in sync so users get the latest version
