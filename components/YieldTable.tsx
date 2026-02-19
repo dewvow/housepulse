@@ -1,13 +1,30 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { SuburbData, BedroomType, PropertyType, FilterState } from '@/lib/types'
 import { formatCurrency, formatPercentage, calculatePropertyYields } from '@/lib/calculations'
 import { deleteSuburb, saveSuburb } from '@/lib/storage'
+import { 
+  ChevronRightIcon, 
+  ExternalLinkIcon, 
+  ClipboardIcon 
+} from './icons'
 
 const generateReaUrl = (suburb: string, state: string, postcode: string) => {
   const slug = `${state.toLowerCase()}/${suburb.toLowerCase().replace(/\s+/g, '-')}-${postcode}`
   return `https://www.realestate.com.au/${slug}/`
+}
+
+const getYieldColorClass = (yieldValue: number): string => {
+  if (yieldValue >= 5) return 'text-green-600'
+  if (yieldValue >= 4) return 'text-yellow-600'
+  return 'text-gray-600'
+}
+
+const getPropertyTypeBadgeClass = (propertyType: PropertyType): string => {
+  return propertyType === 'house' 
+    ? 'bg-blue-100 text-blue-800' 
+    : 'bg-green-100 text-green-800'
 }
 
 type SortField = 'suburb' | 'yield' | 'price'
@@ -39,7 +56,7 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
   const [pastingId, setPastingId] = useState<string | null>(null)
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
 
-  const toggleExpand = (id: string) => {
+  const toggleExpand = useCallback((id: string) => {
     setExpandedRows(prev => {
       const next = new Set(prev)
       if (next.has(id)) {
@@ -49,16 +66,16 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
       }
       return next
     })
-  }
+  }, [])
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = useCallback(async (id: string) => {
     if (confirm('Are you sure you want to delete this suburb?')) {
       await deleteSuburb(id)
       onDataChange()
     }
-  }
+  }, [onDataChange])
 
-  const handlePasteFromClipboard = async (suburb: SuburbData) => {
+  const handlePasteFromClipboard = useCallback(async (suburb: SuburbData) => {
     try {
       setPastingId(suburb.id)
       const text = await navigator.clipboard.readText()
@@ -85,18 +102,20 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
     } finally {
       setPastingId(null)
     }
-  }
+  }, [onDataChange])
 
-  const handleSort = (field: SortField) => {
-    if (sortField === field) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
-    } else {
-      setSortField(field)
-      setSortDirection('asc')
-    }
-  }
+  const handleSort = useCallback((field: SortField) => {
+    setSortField(prev => {
+      if (prev === field) {
+        setSortDirection(d => d === 'asc' ? 'desc' : 'asc')
+      } else {
+        setSortDirection('asc')
+      }
+      return field
+    })
+  }, [])
 
-  const getYields = (suburb: SuburbData): YieldEntry[] => {
+  const getYields = useCallback((suburb: SuburbData): YieldEntry[] => {
     if (!suburb.house || !suburb.unit) return []
 
     const yields: YieldEntry[] = []
@@ -127,7 +146,7 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
     }
 
     return yields.sort((a, b) => b.yield - a.yield)
-  }
+  }, [filters])
 
   const suburbRows = useMemo((): SuburbRow[] => {
     const seenSuburbIds = new Set<string>()
@@ -162,164 +181,227 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
     })
 
     return rows
-  }, [suburbs, filters, sortField, sortDirection])
+  }, [suburbs, getYields, sortField, sortDirection])
+
+  if (suburbs.length === 0) {
+    return (
+      <div className="bg-white rounded-lg shadow-md p-8 text-center text-gray-500">
+        No suburbs found. Add some data to get started!
+      </div>
+    )
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 w-8"></th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 cursor-pointer" onClick={() => handleSort('suburb')}>
-                Suburb ↕
-              </th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">State</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Type / Beds</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 cursor-pointer" onClick={() => handleSort('yield')}>
-                Yield ↕
-              </th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 cursor-pointer" onClick={() => handleSort('price')}>
-                Price ↕
-              </th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Last Updated</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
-            </tr>
-          </thead>
+          <TableHeader 
+            sortField={sortField} 
+            onSort={handleSort} 
+          />
           <tbody>
-            {suburbRows.map((row) => {
-              const isExpanded = expandedRows.has(row.suburb.id)
-              const bestYield = row.yields[0]
-
-              return (
-                <>
-                  <tr 
-                    key={row.suburb.id}
-                    className={`border-t hover:bg-gray-50 ${row.isNewSuburb ? 'border-t-2 border-gray-300' : ''}`}
-                  >
-                    <td className="px-2 py-3">
-                      <button
-                        onClick={() => toggleExpand(row.suburb.id)}
-                        className="text-gray-500 hover:text-gray-700"
-                      >
-                        <svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} 
-                          fill="none" 
-                          viewBox="0 0 24 24" 
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-                    </td>
-                    <td className="px-4 py-3 text-sm">
-                      <div className="flex items-center gap-2">
-                        <a
-                          href={generateReaUrl(row.suburb.suburb, row.suburb.state, row.suburb.postcode)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800"
-                          title="View on realestate.com.au"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
-                        <span className="font-medium">{row.suburb.suburb}</span>
-                      </div>
-                      {row.suburb.isHot && <span className="text-xs">🔥 Hot</span>}
-                    </td>
-                    <td className="px-4 py-3 text-sm">{row.suburb.state}</td>
-                    <td className="px-4 py-3">
-                      <span className={`px-2 py-1 rounded text-xs ${bestYield.propertyType === 'house' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}`}>
-                        {bestYield.propertyType} {bestYield.beds}
-                      </span>
-                    </td>
-                    <td className={`px-4 py-3 text-sm font-medium ${
-                      bestYield.yield >= 5 ? 'text-green-600' : 
-                      bestYield.yield >= 4 ? 'text-yellow-600' : 'text-gray-600'
-                    }`}>
-                      {formatPercentage(bestYield.yield)}
-                    </td>
-                    <td className="px-4 py-3 text-sm">
-                      {formatCurrency(bestYield.buyPrice)}
-                    </td>
-                    <td className="px-4 py-3 text-sm text-gray-500">
-                      {row.suburb.lastUpdated ? new Date(row.suburb.lastUpdated).toLocaleDateString() : '-'}
-                    </td>
-                    <td className="px-4 py-3 text-sm">
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => handlePasteFromClipboard(row.suburb)}
-                          disabled={pastingId === row.suburb.id}
-                          className="text-green-600 hover:text-green-800 disabled:opacity-50"
-                          title="Paste JSON from clipboard"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                          </svg>
-                        </button>
-                        {row.isNewSuburb && (
-                          <button
-                            onClick={() => handleDelete(row.suburb.id)}
-                            className="text-red-600 hover:text-red-800 text-sm"
-                          >
-                            Delete
-                          </button>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                  {isExpanded && (
-                    <tr key={`${row.suburb.id}-expanded`} className="bg-gray-50">
-                      <td colSpan={8} className="px-4 py-3">
-                        <div className="pl-8">
-                          <div className="text-xs font-medium text-gray-500 mb-2">All yields for {row.suburb.suburb}</div>
-                          <table className="w-full text-sm">
-                            <thead>
-                              <tr className="text-left text-gray-500">
-                                <th className="pb-2 font-medium">Type</th>
-                                <th className="pb-2 font-medium">Beds</th>
-                                <th className="pb-2 font-medium">Buy Price</th>
-                                <th className="pb-2 font-medium">Rent/wk</th>
-                                <th className="pb-2 font-medium">Yield</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {row.yields.map((y) => (
-                                <tr key={`${y.propertyType}-${y.beds}`} className="border-t border-gray-200">
-                                  <td className="py-2">
-                                    <span className={`px-2 py-1 rounded text-xs ${y.propertyType === 'house' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}`}>
-                                      {y.propertyType}
-                                    </span>
-                                  </td>
-                                  <td className="py-2">{y.beds}</td>
-                                  <td className="py-2">{formatCurrency(y.buyPrice)}</td>
-                                  <td className="py-2">{y.rentPrice > 0 ? `$${y.rentPrice}/wk` : '-'}</td>
-                                  <td className={`py-2 font-medium ${y.yield >= 5 ? 'text-green-600' : y.yield >= 4 ? 'text-yellow-600' : 'text-gray-600'}`}>
-                                    {formatPercentage(y.yield)}
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      </td>
-                    </tr>
-                  )}
-                </>
-              )
-            })}
+            {suburbRows.map((row) => (
+              <SuburbRow
+                key={row.suburb.id}
+                row={row}
+                isExpanded={expandedRows.has(row.suburb.id)}
+                isPasting={pastingId === row.suburb.id}
+                onToggleExpand={() => toggleExpand(row.suburb.id)}
+                onDelete={() => handleDelete(row.suburb.id)}
+                onPaste={() => handlePasteFromClipboard(row.suburb)}
+              />
+            ))}
           </tbody>
         </table>
       </div>
-      
-      {suburbs.length === 0 && (
-        <div className="p-8 text-center text-gray-500">
-          No suburbs found. Add some data to get started!
-        </div>
-      )}
     </div>
+  )
+}
+
+// Sub-components
+
+interface TableHeaderProps {
+  sortField: SortField
+  onSort: (field: SortField) => void
+}
+
+function TableHeader({ sortField, onSort }: TableHeaderProps) {
+  const SortableHeader = ({ 
+    field, 
+    children 
+  }: { 
+    field: SortField 
+    children: React.ReactNode 
+  }) => (
+    <th 
+      className="px-4 py-3 text-left text-sm font-semibold text-gray-700 cursor-pointer"
+      onClick={() => onSort(field)}
+    >
+      {children} {sortField === field ? '↕' : ''}
+    </th>
+  )
+
+  return (
+    <thead className="bg-gray-100">
+      <tr>
+        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 w-8"></th>
+        <SortableHeader field="suburb">Suburb</SortableHeader>
+        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">State</th>
+        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Type / Beds</th>
+        <SortableHeader field="yield">Yield</SortableHeader>
+        <SortableHeader field="price">Price</SortableHeader>
+        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Last Updated</th>
+        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
+      </tr>
+    </thead>
+  )
+}
+
+interface SuburbRowProps {
+  row: SuburbRow
+  isExpanded: boolean
+  isPasting: boolean
+  onToggleExpand: () => void
+  onDelete: () => void
+  onPaste: () => void
+}
+
+function SuburbRow({ 
+  row, 
+  isExpanded, 
+  isPasting, 
+  onToggleExpand, 
+  onDelete, 
+  onPaste 
+}: SuburbRowProps) {
+  const bestYield = row.yields[0]
+
+  return (
+    <>
+      <tr 
+        className={`border-t hover:bg-gray-50 ${row.isNewSuburb ? 'border-t-2 border-gray-300' : ''}`}
+      >
+        <td className="px-2 py-3">
+          <button
+            onClick={onToggleExpand}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <ChevronRightIcon className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+          </button>
+        </td>
+        <td className="px-4 py-3 text-sm">
+          <div className="flex items-center gap-2">
+            <a
+              href={generateReaUrl(row.suburb.suburb, row.suburb.state, row.suburb.postcode)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800"
+              title="View on realestate.com.au"
+            >
+              <ExternalLinkIcon className="h-4 w-4" />
+            </a>
+            <span className="font-medium">{row.suburb.suburb}</span>
+          </div>
+          {row.suburb.isHot && <span className="text-xs">🔥 Hot</span>}
+        </td>
+        <td className="px-4 py-3 text-sm">{row.suburb.state}</td>
+        <td className="px-4 py-3">
+          <PropertyTypeBadge 
+            propertyType={bestYield.propertyType} 
+            beds={bestYield.beds} 
+          />
+        </td>
+        <td className={`px-4 py-3 text-sm font-medium ${getYieldColorClass(bestYield.yield)}`}>
+          {formatPercentage(bestYield.yield)}
+        </td>
+        <td className="px-4 py-3 text-sm">
+          {formatCurrency(bestYield.buyPrice)}
+        </td>
+        <td className="px-4 py-3 text-sm text-gray-500">
+          {row.suburb.lastUpdated ? new Date(row.suburb.lastUpdated).toLocaleDateString() : '-'}
+        </td>
+        <td className="px-4 py-3 text-sm">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onPaste}
+              disabled={isPasting}
+              className="text-green-600 hover:text-green-800 disabled:opacity-50"
+              title="Paste JSON from clipboard"
+            >
+              <ClipboardIcon className="h-4 w-4" />
+            </button>
+            {row.isNewSuburb && (
+              <button
+                onClick={onDelete}
+                className="text-red-600 hover:text-red-800 text-sm"
+              >
+                Delete
+              </button>
+            )}
+          </div>
+        </td>
+      </tr>
+      {isExpanded && (
+        <ExpandedRow suburbName={row.suburb.suburb} yields={row.yields} />
+      )}
+    </>
+  )
+}
+
+interface PropertyTypeBadgeProps {
+  propertyType: PropertyType
+  beds: BedroomType
+}
+
+function PropertyTypeBadge({ propertyType, beds }: PropertyTypeBadgeProps) {
+  return (
+    <span className={`px-2 py-1 rounded text-xs ${getPropertyTypeBadgeClass(propertyType)}`}>
+      {propertyType} {beds}
+    </span>
+  )
+}
+
+interface ExpandedRowProps {
+  suburbName: string
+  yields: YieldEntry[]
+}
+
+function ExpandedRow({ suburbName, yields }: ExpandedRowProps) {
+  return (
+    <tr className="bg-gray-50">
+      <td colSpan={8} className="px-4 py-3">
+        <div className="pl-8">
+          <div className="text-xs font-medium text-gray-500 mb-2">
+            All yields for {suburbName}
+          </div>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-gray-500">
+                <th className="pb-2 font-medium">Type</th>
+                <th className="pb-2 font-medium">Beds</th>
+                <th className="pb-2 font-medium">Buy Price</th>
+                <th className="pb-2 font-medium">Rent/wk</th>
+                <th className="pb-2 font-medium">Yield</th>
+              </tr>
+            </thead>
+            <tbody>
+              {yields.map((y) => (
+                <tr key={`${y.propertyType}-${y.beds}`} className="border-t border-gray-200">
+                  <td className="py-2">
+                    <PropertyTypeBadge propertyType={y.propertyType} beds={y.beds} />
+                  </td>
+                  <td className="py-2">{y.beds}</td>
+                  <td className="py-2">{formatCurrency(y.buyPrice)}</td>
+                  <td className="py-2">{y.rentPrice > 0 ? `$${y.rentPrice}/wk` : '-'}</td>
+                  <td className={`py-2 font-medium ${getYieldColorClass(y.yield)}`}>
+                    {formatPercentage(y.yield)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
   )
 }
