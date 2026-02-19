@@ -51,6 +51,7 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
           yield: data.unit.yield || calculatePropertyYields(data.unit.bedrooms || initialPropertyData.bedrooms),
         },
         dateAdded: new Date().toISOString(),
+        lastUpdated: new Date().toISOString(),
       }
     }
     
@@ -77,6 +78,7 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
         yield: { ...initialPropertyData.yield },
       },
       dateAdded: new Date().toISOString(),
+      lastUpdated: new Date().toISOString(),
     }
   }
 
@@ -120,6 +122,7 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
         yield: calculatePropertyYields(unitData.bedrooms),
       },
       dateAdded: new Date().toISOString(),
+      lastUpdated: new Date().toISOString(),
     }
 
     await saveSuburb(suburbData)
