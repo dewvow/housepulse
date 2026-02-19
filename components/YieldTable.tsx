@@ -81,6 +81,18 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
       const text = await navigator.clipboard.readText()
       const data = JSON.parse(text)
       
+      // Validate that the pasted data matches the clicked suburb
+      const pastedSuburb = data.suburb?.toLowerCase()?.trim()
+      const clickedSuburb = suburb.suburb.toLowerCase().trim()
+      const pastedState = data.state?.toUpperCase()?.trim()
+      const clickedState = suburb.state.toUpperCase().trim()
+      
+      if (pastedSuburb !== clickedSuburb || pastedState !== clickedState) {
+        throw new Error(
+          `Clipboard data doesn't match. You clicked on "${suburb.suburb}, ${suburb.state}" but the clipboard contains "${data.suburb}, ${data.state}".`
+        )
+      }
+      
       const processed: SuburbData = {
         ...suburb,
         house: {
@@ -153,10 +165,12 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
     const rows: SuburbRow[] = []
 
     for (const suburb of suburbs) {
-      if (!suburb.house || !suburb.unit) continue
-
       const yields = getYields(suburb)
-      if (yields.length === 0) continue
+      
+      // Allow hot suburbs to be shown even without yield data
+      const hasData = suburb.house && suburb.unit
+      const shouldShow = yields.length > 0 || (suburb.isHot && filters.hotOnly)
+      if (!shouldShow) continue
 
       const isNewSuburb = !seenSuburbIds.has(suburb.id)
       seenSuburbIds.add(suburb.id)
@@ -275,6 +289,7 @@ function SuburbRow({
   onPaste 
 }: SuburbRowProps) {
   const bestYield = row.yields[0]
+  const hasData = row.yields.length > 0
 
   return (
     <>
@@ -284,7 +299,8 @@ function SuburbRow({
         <td className="px-2 py-3">
           <button
             onClick={onToggleExpand}
-            className="text-gray-500 hover:text-gray-700"
+            disabled={!hasData}
+            className={`text-gray-500 hover:text-gray-700 ${!hasData ? 'opacity-30 cursor-not-allowed' : ''}`}
           >
             <ChevronRightIcon className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
           </button>
@@ -306,16 +322,20 @@ function SuburbRow({
         </td>
         <td className="px-4 py-3 text-sm">{row.suburb.state}</td>
         <td className="px-4 py-3">
-          <PropertyTypeBadge 
-            propertyType={bestYield.propertyType} 
-            beds={bestYield.beds} 
-          />
+          {hasData ? (
+            <PropertyTypeBadge 
+              propertyType={bestYield.propertyType} 
+              beds={bestYield.beds} 
+            />
+          ) : (
+            <span className="text-xs text-gray-400">No data</span>
+          )}
         </td>
-        <td className={`px-4 py-3 text-sm font-medium ${getYieldColorClass(bestYield.yield)}`}>
-          {formatPercentage(bestYield.yield)}
+        <td className={`px-4 py-3 text-sm font-medium ${hasData ? getYieldColorClass(bestYield.yield) : 'text-gray-400'}`}>
+          {hasData ? formatPercentage(bestYield.yield) : '-'}
         </td>
         <td className="px-4 py-3 text-sm">
-          {formatCurrency(bestYield.buyPrice)}
+          {hasData ? formatCurrency(bestYield.buyPrice) : '-'}
         </td>
         <td className="px-4 py-3 text-sm text-gray-500">
           {row.suburb.lastUpdated ? new Date(row.suburb.lastUpdated).toLocaleDateString() : '-'}
@@ -341,7 +361,7 @@ function SuburbRow({
           </div>
         </td>
       </tr>
-      {isExpanded && (
+      {isExpanded && hasData && (
         <ExpandedRow suburbName={row.suburb.suburb} yields={row.yields} />
       )}
     </>
