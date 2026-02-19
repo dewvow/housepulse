@@ -1,6 +1,8 @@
 'use client'
 
 import { FilterState, AUSTRALIAN_STATES, BEDROOM_OPTIONS, PROPERTY_TYPES, StateCode, BedroomType, PropertyType } from '@/lib/types'
+import { Button, Input, Checkbox } from '@/components/ui'
+import { LABELS, PLACEHOLDERS } from '@/lib/constants'
 
 interface FilterBarProps {
   filters: FilterState
@@ -37,17 +39,14 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </label>
         <div className="flex flex-wrap gap-2">
           {AUSTRALIAN_STATES.map((state) => (
-            <button
+            <Button
               key={state.code}
+              variant={filters.states.includes(state.code) ? 'primary' : 'outline'}
+              size="sm"
               onClick={() => toggleState(state.code)}
-              className={`px-3 py-1 text-sm rounded-full border ${
-                filters.states.includes(state.code)
-                  ? 'bg-blue-500 text-white border-blue-500'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-              }`}
             >
               {state.code}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -58,17 +57,15 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </label>
         <div className="flex flex-wrap gap-2">
           {PROPERTY_TYPES.map((type) => (
-            <button
+            <Button
               key={type}
+              variant={filters.propertyTypes.includes(type) ? 'primary' : 'outline'}
+              size="sm"
               onClick={() => togglePropertyType(type)}
-              className={`px-3 py-1 text-sm rounded-full border capitalize ${
-                filters.propertyTypes.includes(type)
-                  ? 'bg-purple-500 text-white border-purple-500'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-              }`}
+              className="capitalize"
             >
               {type}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -79,48 +76,40 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </label>
         <div className="flex flex-wrap gap-2">
           {BEDROOM_OPTIONS.map((beds) => (
-            <button
+            <Button
               key={beds}
+              variant={filters.bedrooms.includes(beds) ? 'primary' : 'outline'}
+              size="sm"
               onClick={() => toggleBedroom(beds)}
-              className={`px-3 py-1 text-sm rounded-full border ${
-                filters.bedrooms.includes(beds)
-                  ? 'bg-blue-500 text-white border-blue-500'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-              }`}
             >
               {beds} bed
-            </button>
+            </Button>
           ))}
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Max Price ($K)
-          </label>
-          <input
-            type="text"
-            value={filters.maxPrice ? Math.round(filters.maxPrice / 1000).toLocaleString() : ''}
-            onChange={(e) => {
-              const value = e.target.value.replace(/[^\d]/g, '')
-              onChange({ ...filters, maxPrice: value ? parseInt(value) * 1000 : null })
-            }}
-            placeholder="e.g. 750"
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
+        <Input
+          label={LABELS.MAX_PRICE}
+          type="text"
+          value={filters.maxPrice ? Math.round(filters.maxPrice / 1000).toLocaleString() : ''}
+          onChange={(e) => {
+            const value = e.target.value.replace(/[^\d]/g, '')
+            onChange({ ...filters, maxPrice: value ? parseInt(value) * 1000 : null })
+          }}
+          placeholder={PLACEHOLDERS.MAX_PRICE}
+        />
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Min Yield %
+            {LABELS.MIN_YIELD}
           </label>
           <select
             value={filters.minYield || ''}
             onChange={(e) => onChange({ ...filters, minYield: e.target.value ? parseFloat(e.target.value) : null })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
           >
-            <option value="">No minimum</option>
+            <option value="">{LABELS.NO_MINIMUM}</option>
             <option value="3">3%</option>
             <option value="4">4%</option>
             <option value="5">5%</option>
@@ -130,15 +119,11 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </div>
       </div>
 
-      <label className="flex items-center gap-2">
-        <input
-          type="checkbox"
-          checked={filters.hotOnly}
-          onChange={(e) => onChange({ ...filters, hotOnly: e.target.checked })}
-          className="w-4 h-4"
-        />
-        <span className="text-sm text-gray-700">Show Hot Suburbs Only</span>
-      </label>
+      <Checkbox
+        label={LABELS.SHOW_HOT_ONLY}
+        checked={filters.hotOnly}
+        onChange={(e) => onChange({ ...filters, hotOnly: e.target.checked })}
+      />
     </div>
   )
 }

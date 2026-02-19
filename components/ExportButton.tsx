@@ -2,6 +2,8 @@
 
 import { SuburbData } from '@/lib/types'
 import { exportToCSV } from '@/lib/storage'
+import { Button } from '@/components/ui'
+import { LABELS, CSV } from '@/lib/constants'
 
 interface ExportButtonProps {
   suburbs: SuburbData[]
@@ -14,7 +16,7 @@ export function ExportButton({ suburbs }: ExportButtonProps) {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `housepulse-data-${new Date().toISOString().split('T')[0]}.csv`
+    a.download = `${CSV.FILENAME_PREFIX}-${new Date().toISOString().split('T')[0]}.csv`
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
@@ -22,12 +24,12 @@ export function ExportButton({ suburbs }: ExportButtonProps) {
   }
 
   return (
-    <button
+    <Button
       onClick={handleExport}
       disabled={suburbs.length === 0}
-      className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+      variant="primary"
     >
-      Export CSV ({suburbs.length} suburbs)
-    </button>
+      {LABELS.EXPORT_CSV(suburbs.length)}
+    </Button>
   )
 }
