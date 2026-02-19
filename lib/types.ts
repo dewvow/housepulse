@@ -27,12 +27,29 @@ export interface PropertyData {
   yield: Record<BedroomType, number>
 }
 
+export interface SuburbDemographics {
+  medianIncome: number           // Annual personal income from ABS (weekly * 52)
+  medianAge: number               // From ABS C21_G02_POA
+  mainLanguage: string            // From ABS C21_G13_POA (top language)
+  occupationType: string          // From ABS C21_G60_POA (mapped to broad category)
+  censusYear: number              // 2021 (hardcoded for now, future: detect latest)
+  source: 'abs-api' | 'fallback'  // Track if data came from live API or fallback
+}
+
 export interface SuburbData {
   id: string
   suburb: string
   state: StateCode
   postcode: string
+  sscCode?: number
+  lat?: number
+  lng?: number
+  population?: number
+  medianIncome?: number
   isHot: boolean
+  distanceToCapital: number
+  nominatedFor: string[]
+  demographics?: SuburbDemographics
   house: PropertyData
   unit: PropertyData
   dateAdded: string
@@ -43,6 +60,11 @@ export interface SuburbListItem {
   suburb: string
   state: StateCode
   postcode: string
+  sscCode?: number
+  lat?: number
+  lng?: number
+  population?: number
+  medianIncome?: number
 }
 
 export interface FilterState {

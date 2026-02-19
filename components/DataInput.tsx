@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { SuburbData, StateCode, BedroomType, BedroomPriceData } from '@/lib/types'
+import { SuburbData, StateCode, BedroomType, BedroomPriceData, SuburbDemographics } from '@/lib/types'
 import { calculatePropertyYields, generateSuburbId, parseReaPrice, parseReaRent } from '@/lib/calculations'
 import { saveSuburb } from '@/lib/storage'
+import { loadSuburbs, getSuburbDetails, calculateDistance } from '@/lib/suburbs'
+import { fetchDemographics } from '@/lib/demographics'
 
 interface DataInputProps {
   onSuburbAdded: () => void
@@ -30,18 +32,35 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
   const [state, setState] = useState<StateCode>('NSW')
   const [postcode, setPostcode] = useState('')
   const [isHot, setIsHot] = useState(false)
+  const [nominatedFor, setNominatedFor] = useState('')
   const [houseData, setHouseData] = useState({ ...initialPropertyData })
   const [unitData, setUnitData] = useState({ ...initialPropertyData })
 
-  const processImportedData = (data: any): SuburbData => {
+
+
+  const processImportedData = async (data: any): Promise<SuburbData> => {
+    const stateCode = data.state.toUpperCase() as StateCode
+    const suburbs = await loadSuburbs()
+    const details = getSuburbDetails(data.suburb, stateCode, data.postcode)
+    const distance = details ? calculateDistance(stateCode, details.lat, details.lng) : 0
+    
+    const demographics = details?.sscCode 
+      ? await fetchDemographics(details.sscCode, data.postcode, details.medianIncome, details.population)
+      : undefined
+
+    const nominatedList = data.nominatedFor || []
+
     // Handle new format with house/unit
     if (data.house && data.unit) {
       return {
         id: data.id || generateSuburbId(data.suburb, data.state, data.postcode),
         suburb: data.suburb,
-        state: data.state.toUpperCase() as StateCode,
+        state: stateCode,
         postcode: data.postcode,
         isHot: data.isHot || false,
+        distanceToCapital: distance,
+        nominatedFor: Array.isArray(nominatedList) ? nominatedList : [nominatedList].filter(Boolean),
+        demographics,
         house: {
           bedrooms: data.house.bedrooms || initialPropertyData.bedrooms,
           yield: data.house.yield || calculatePropertyYields(data.house.bedrooms || initialPropertyData.bedrooms),
@@ -66,9 +85,12 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
     return {
       id: data.id || generateSuburbId(data.suburb, data.state, data.postcode),
       suburb: data.suburb,
-      state: data.state.toUpperCase() as StateCode,
+      state: stateCode,
       postcode: data.postcode,
       isHot: data.isHot || false,
+      distanceToCapital: distance,
+      nominatedFor: [],
+      demographics,
       house: {
         bedrooms: convertedBedrooms,
         yield: calculatePropertyYields(convertedBedrooms),
@@ -91,7 +113,7 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
         throw new Error('Missing required fields: suburb, state, postcode')
       }
 
-      const suburbData = processImportedData(data)
+      const suburbData = await processImportedData(data)
       await saveSuburb(suburbData)
       setJsonInput('')
       setError('')
@@ -107,12 +129,25 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
       return
     }
 
+    const suburbs = await loadSuburbs()
+    const details = getSuburbDetails(suburbName, state, postcode)
+    const distance = details ? calculateDistance(state, details.lat, details.lng) : 0
+    
+    const demographics = details?.sscCode 
+      ? await fetchDemographics(details.sscCode, postcode, details.medianIncome, details.population)
+      : undefined
+
+    const nominatedList = nominatedFor ? nominatedFor.split(',').map(s => s.trim()).filter(Boolean) : []
+
     const suburbData: SuburbData = {
       id: generateSuburbId(suburbName, state, postcode),
       suburb: suburbName,
       state,
       postcode,
       isHot,
+      distanceToCapital: distance,
+      nominatedFor: nominatedList,
+      demographics,
       house: {
         bedrooms: houseData.bedrooms,
         yield: calculatePropertyYields(houseData.bedrooms),
@@ -129,6 +164,7 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
     setSuburbName('')
     setPostcode('')
     setIsHot(false)
+    setNominatedFor('')
     setHouseData({ ...initialPropertyData })
     setUnitData({ ...initialPropertyData })
     setError('')
@@ -261,6 +297,14 @@ export function DataInput({ onSuburbAdded }: DataInputProps) {
             />
             Mark as Hot Suburb
           </label>
+
+          <input
+            type="text"
+            value={nominatedFor}
+            onChange={(e) => setNominatedFor(e.target.value)}
+            placeholder="Nominated for (e.g. Hot 100 2026)"
+            className="w-full p-2 border border-gray-300 rounded"
+          />
 
           <div className="space-y-6">
             {renderPropertyInputs('house', houseData)}

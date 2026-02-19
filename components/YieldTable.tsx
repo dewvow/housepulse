@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useMemo, useCallback } from 'react'
-import { SuburbData, BedroomType, PropertyType, FilterState } from '@/lib/types'
+import { SuburbData, BedroomType, PropertyType, FilterState, SuburbDemographics } from '@/lib/types'
 import { formatCurrency, formatPercentage, calculatePropertyYields } from '@/lib/calculations'
 import { deleteSuburb, saveSuburb } from '@/lib/storage'
+import { fetchDemographics } from '@/lib/demographics'
 import { 
   ChevronRightIcon, 
   ExternalLinkIcon, 
@@ -55,14 +56,36 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
   const [pastingId, setPastingId] = useState<string | null>(null)
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
+  const [demographicsLoading, setDemographicsLoading] = useState<Set<string>>(new Set())
+  const [demographicsCache, setDemographicsCache] = useState<Map<string, SuburbDemographics>>(new Map())
 
-  const toggleExpand = useCallback((id: string) => {
+  const toggleExpand = useCallback(async (id: string, suburb: SuburbData) => {
     setExpandedRows(prev => {
       const next = new Set(prev)
       if (next.has(id)) {
         next.delete(id)
       } else {
         next.add(id)
+        
+        if (suburb.demographics) {
+          setDemographicsCache(prev => new Map(prev).set(id, suburb.demographics!))
+        } else if (suburb.sscCode && suburb.postcode && suburb.demographics === undefined) {
+          setDemographicsLoading(prev => new Set(prev).add(id))
+          
+          fetchDemographics(suburb.sscCode, suburb.postcode, suburb.medianIncome, suburb.population)
+            .then(demo => {
+              if (demo) {  // Only cache if we got data
+                setDemographicsCache(prev => new Map(prev).set(id, demo))
+              }
+            })
+            .finally(() => {
+              setDemographicsLoading(prev => {
+                const next = new Set(prev)
+                next.delete(id)
+                return next
+              })
+            })
+        }
       }
       return next
     })
@@ -103,6 +126,9 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
           bedrooms: data.unit?.bedrooms || suburb.unit.bedrooms,
           yield: data.unit?.yield || calculatePropertyYields(data.unit?.bedrooms || suburb.unit.bedrooms),
         },
+        nominatedFor: data.nominatedFor || suburb.nominatedFor || [],
+        distanceToCapital: data.distanceToCapital || suburb.distanceToCapital || 0,
+        demographics: data.demographics || suburb.demographics,
         dateAdded: suburb.dateAdded || new Date().toISOString(),
         lastUpdated: new Date().toISOString(),
       }
@@ -216,7 +242,9 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
                 row={row}
                 isExpanded={expandedRows.has(row.suburb.id)}
                 isPasting={pastingId === row.suburb.id}
-                onToggleExpand={() => toggleExpand(row.suburb.id)}
+                demographics={demographicsCache.get(row.suburb.id)}
+                isLoadingDemographics={demographicsLoading.has(row.suburb.id)}
+                onToggleExpand={() => toggleExpand(row.suburb.id, row.suburb)}
                 onDelete={() => handleDelete(row.suburb.id)}
                 onPaste={() => handlePasteFromClipboard(row.suburb)}
               />
@@ -260,6 +288,7 @@ function TableHeader({ sortField, onSort }: TableHeaderProps) {
         <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Type / Beds</th>
         <SortableHeader field="yield">Yield</SortableHeader>
         <SortableHeader field="price">Price</SortableHeader>
+        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Distance</th>
         <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Last Updated</th>
         <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
       </tr>
@@ -271,6 +300,8 @@ interface SuburbRowProps {
   row: SuburbRow
   isExpanded: boolean
   isPasting: boolean
+  demographics?: SuburbDemographics
+  isLoadingDemographics: boolean
   onToggleExpand: () => void
   onDelete: () => void
   onPaste: () => void
@@ -279,7 +310,9 @@ interface SuburbRowProps {
 function SuburbRow({ 
   row, 
   isExpanded, 
-  isPasting, 
+  isPasting,
+  demographics,
+  isLoadingDemographics,
   onToggleExpand, 
   onDelete, 
   onPaste 
@@ -334,6 +367,9 @@ function SuburbRow({
           {hasData ? formatCurrency(bestYield.buyPrice) : '-'}
         </td>
         <td className="px-4 py-3 text-sm text-gray-500">
+          {row.suburb.distanceToCapital > 0 ? `${row.suburb.distanceToCapital} km` : '-'}
+        </td>
+        <td className="px-4 py-3 text-sm text-gray-500">
           {row.suburb.lastUpdated ? new Date(row.suburb.lastUpdated).toLocaleDateString() : '-'}
         </td>
         <td className="px-4 py-3 text-sm">
@@ -358,7 +394,12 @@ function SuburbRow({
         </td>
       </tr>
       {isExpanded && hasData && (
-        <ExpandedRow suburbName={row.suburb.suburb} yields={row.yields} />
+        <ExpandedRow 
+          suburb={row.suburb} 
+          yields={row.yields} 
+          demographics={demographics}
+          isLoadingDemographics={isLoadingDemographics}
+        />
       )}
     </>
   )
@@ -378,18 +419,61 @@ function PropertyTypeBadge({ propertyType, beds }: PropertyTypeBadgeProps) {
 }
 
 interface ExpandedRowProps {
-  suburbName: string
+  suburb: SuburbData
   yields: YieldEntry[]
+  demographics?: SuburbDemographics
+  isLoadingDemographics: boolean
 }
 
-function ExpandedRow({ suburbName, yields }: ExpandedRowProps) {
+function ExpandedRow({ suburb, yields, demographics, isLoadingDemographics }: ExpandedRowProps) {
   return (
     <tr className="bg-gray-50">
       <td colSpan={8} className="px-4 py-3">
         <div className="pl-8">
           <div className="text-xs font-medium text-gray-500 mb-2">
-            All yields for {suburbName}
+            All yields for {suburb.suburb}
           </div>
+          
+          <div className="mb-4 p-3 bg-white rounded border border-gray-200">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-xs font-medium text-gray-500">Demographics</div>
+              {demographics && (
+                <div className="text-xs text-gray-400">
+                  Census {demographics.censusYear}
+                  {demographics.source === 'fallback' && ' (estimated)'}
+                </div>
+              )}
+            </div>
+            {isLoadingDemographics ? (
+              <div className="text-sm text-gray-400">Loading demographics from ABS...</div>
+            ) : demographics ? (
+              <div className="grid grid-cols-5 gap-4 text-sm">
+                <div>
+                  <div className="text-gray-500 mb-1">Population</div>
+                  <div className="font-medium">{suburb.population ? new Intl.NumberFormat('en-AU').format(suburb.population) : '-'}</div>
+                </div>
+                <div>
+                  <div className="text-gray-500 mb-1">Median Income</div>
+                  <div className="font-medium">${new Intl.NumberFormat('en-AU').format(demographics.medianIncome)}</div>
+                </div>
+                <div>
+                  <div className="text-gray-500 mb-1">Median Age</div>
+                  <div className="font-medium">{demographics.medianAge}</div>
+                </div>
+                <div>
+                  <div className="text-gray-500 mb-1">Main Language</div>
+                  <div className="font-medium">{demographics.mainLanguage}</div>
+                </div>
+                <div>
+                  <div className="text-gray-500 mb-1">Occupation</div>
+                  <div className="font-medium">{demographics.occupationType}</div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-sm text-gray-400">Demographics not available from ABS Census</div>
+            )}
+          </div>
+          
           <table className="w-full text-sm">
             <thead>
               <tr className="text-left text-gray-500">

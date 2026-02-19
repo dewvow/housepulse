@@ -1,14 +1,74 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { promises as fs } from 'fs'
 import { join } from 'path'
-import { SuburbData } from '@/lib/types'
+import { SuburbData, SuburbListItem, StateCode } from '@/lib/types'
+import { getDistanceToCapital } from '@/lib/capital-distances'
 
 const DATA_FILE = join(process.cwd(), 'data', 'suburbs-data.json')
+const SUBURBS_REFERENCE_FILE = join(process.cwd(), 'public', 'data', 'suburbs.json')
+
+let suburbsReferenceCache: SuburbListItem[] | null = null
+
+async function loadSuburbsReference(): Promise<SuburbListItem[]> {
+  if (suburbsReferenceCache) return suburbsReferenceCache
+  
+  try {
+    const data = await fs.readFile(SUBURBS_REFERENCE_FILE, 'utf-8')
+    const json = JSON.parse(data)
+    const suburbs = json.data || json
+    
+    suburbsReferenceCache = suburbs.map((item: any) => ({
+      suburb: item.suburb || item.name || item.locality,
+      state: item.state?.toUpperCase(),
+      postcode: String(item.postcode || item.zip || ''),
+      sscCode: item.ssc_code,
+      lat: item.lat,
+      lng: item.lng,
+      population: item.population,
+      medianIncome: item.median_income
+    }))
+    
+    return suburbsReferenceCache || []
+  } catch (error) {
+    console.error('Error loading suburbs reference:', error)
+    return []
+  }
+}
+
+function enrichSuburbData(suburb: SuburbData, reference: SuburbListItem[]): SuburbData {
+  const match = reference.find(r => 
+    r.suburb.toLowerCase() === suburb.suburb.toLowerCase() &&
+    r.state === suburb.state &&
+    String(r.postcode) === String(suburb.postcode)
+  )
+  
+  if (match) {
+    // Calculate distance if we have coordinates
+    const distance = match.lat && match.lng 
+      ? getDistanceToCapital(suburb.state as StateCode, match.lat, match.lng)
+      : suburb.distanceToCapital || 0
+    
+    return {
+      ...suburb,
+      sscCode: match.sscCode,
+      lat: match.lat,
+      lng: match.lng,
+      population: match.population,
+      medianIncome: match.medianIncome,
+      distanceToCapital: distance
+    }
+  }
+  
+  return suburb
+}
 
 async function readData(): Promise<SuburbData[]> {
   try {
     const data = await fs.readFile(DATA_FILE, 'utf-8')
-    return JSON.parse(data)
+    const suburbs = JSON.parse(data)
+    const reference = await loadSuburbsReference()
+    
+    return suburbs.map((s: SuburbData) => enrichSuburbData(s, reference))
   } catch (error) {
     return []
   }
