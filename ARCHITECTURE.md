@@ -10,6 +10,7 @@ HousePulse is a Next.js application for real estate market research in Australia
 - **Language**: TypeScript 5.5.4
 - **UI**: React 18.3.1
 - **Styling**: Tailwind CSS 3.4.7
+- **Validation**: Zod
 - **Build**: Next.js built-in build system
 
 ## Project Structure
@@ -22,21 +23,37 @@ HousePulse/
 │   ├── layout.tsx                # Root layout
 │   └── page.tsx                  # Landing page
 ├── components/                   # React components
-│   ├── DataInput.tsx             # Data entry form
-│   ├── ExportButton.tsx          # CSV export
-│   ├── FilterBar.tsx             # Filter controls
-│   ├── HotSuburbs.tsx            # Hot suburbs list
-│   ├── icons.tsx                 # SVG icons
-│   ├── StateSelector.tsx         # State picker
-│   ├── SuburbSearch.tsx          # Suburb search
-│   └── YieldTable.tsx            # Main data table
-├── lib/                          # Utilities and types
-│   ├── calculations.ts           # Yield calculations
-│   ├── storage.ts                # Data persistence
-│   ├── suburbs.ts                # Suburb data
-│   └── types.ts                  # TypeScript types
-├── public/                       # Static assets
-└── INSTRUCTIONS.md               # User documentation
+│   ├── ui/                      # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   ├── Select.tsx
+│   │   ├── Checkbox.tsx
+│   │   └── TextArea.tsx
+│   ├── DataInput.tsx            # Data entry form
+│   ├── ExportButton.tsx         # CSV export
+│   ├── FilterBar.tsx            # Filter controls
+│   ├── HotSuburbs.tsx           # Hot suburbs list
+│   ├── icons.tsx                # SVG icons
+│   ├── StateSelector.tsx        # State picker
+│   ├── SuburbSearch.tsx         # Suburb search
+│   └── YieldTable.tsx           # Main data table
+├── lib/                         # Utilities and types
+│   ├── calculations.ts          # Yield calculations
+│   ├── storage.ts               # Data persistence
+│   ├── suburbs.ts               # Suburb data
+│   ├── types.ts                 # TypeScript types
+│   ├── constants.ts             # App constants
+│   ├── validation.ts            # Zod validation schemas
+│   ├── bedroom-utils.ts         # Bedroom data utilities
+│   ├── date-utils.ts           # Date formatting
+│   ├── url-builder.ts           # External URL builders
+│   └── hooks/                   # Custom React hooks
+│       ├── useClipboard.ts
+│       ├── useSort.ts
+│       ├── useExpandedRows.ts
+│       └── useAsync.ts
+├── public/                      # Static assets
+└── INSTRUCTIONS.md              # User documentation
 ```
 
 ## Data Model
@@ -73,8 +90,8 @@ interface FilterState {
 
 ### Storage
 
-- **Local Storage**: Client-side persistence using `localStorage`
-- **Data Key**: `housepulse-data`
+- **File-based**: Data persisted to `data/suburbs-data.json`
+- **API**: REST endpoints via `/api/suburbs`
 - **Backup/Restore**: JSON import/export via DataInput component
 
 ## Component Architecture
@@ -82,10 +99,22 @@ interface FilterState {
 ### Data Flow
 
 1. **DataInput** → User inputs property data
-2. **storage.ts** → Persists to localStorage
+2. **storage.ts** → Persists to file via API
 3. **dashboard/page.tsx** → Loads data, manages filters
 4. **FilterBar** → User adjusts filters
 5. **YieldTable** → Displays filtered results
+
+### UI Component Library
+
+Located in `components/ui/`:
+
+| Component | Props | Purpose |
+|-----------|-------|---------|
+| Button | variant, size, fullWidth | Reusable button with variants (primary, secondary, outline, danger, ghost) |
+| Input | label, error | Text input with label and error states |
+| Select | label, error, options | Dropdown select with options |
+| Checkbox | label | Accessible checkbox with label |
+| TextArea | label, error | Multi-line text input |
 
 ### Key Components
 
@@ -96,6 +125,51 @@ interface FilterState {
 | YieldTable | Expandable table showing yield data by suburb | `components/YieldTable.tsx` |
 | ExportButton | CSV export functionality | `components/ExportButton.tsx` |
 | HotSuburbs | Lists "hot" suburbs with special indicators | `components/HotSuburbs.tsx` |
+
+## Utilities
+
+### Constants (`lib/constants.ts`)
+
+Centralized constants for:
+- UI labels and placeholders
+- CSV export configuration
+- External URLs (realestate.com.au)
+- Yield color thresholds
+- Error messages
+
+### Validation (`lib/validation.ts`)
+
+Zod schemas for runtime validation:
+- `SuburbDataSchema` - Full suburb data validation
+- `BookmarkletDataSchema` - Bookmarklet import validation
+- `FilterStateSchema` - Filter state validation
+- Migration support for old data formats
+
+### Bedroom Utilities (`lib/bedroom-utils.ts`)
+
+- `forEachBedroom()` - Iterate over bedroom types
+- `mapBedroom()` - Map bedroom types to values
+- `createEmptyBedroomData()` - Initialize empty bedroom data
+- `convertOldBedroomFormat()` - Migrate legacy data
+
+### Custom Hooks (`lib/hooks/`)
+
+- `useClipboard` - Clipboard read/write operations
+- `useSort` / `useSortWithDirection` - Sort state management
+- `useExpandedRows` - Expandable row state
+- `useAsync` - Async operation state
+
+### Date Utilities (`lib/date-utils.ts`)
+
+- `formatDate()` - Localized date formatting
+- `formatRelativeDate()` - Relative time ("2 days ago")
+- `toDate()` / `isValidDate()` - Date conversion/validation
+
+### URL Builder (`lib/url-builder.ts`)
+
+- `buildReaSuburbUrl()` - Realestate.com.au suburb page
+- `buildReaSearchUrl()` - Search results page
+- `buildGoogleMapsUrl()` - Google Maps location
 
 ## State Management
 
@@ -126,17 +200,19 @@ const [filters, setFilters] = useState<FilterState>({
 
 ### GET /api/suburbs
 
-Returns list of all Australian suburbs for autocomplete.
+Returns all saved suburbs.
 
-**Response**: `SuburbListItem[]`
+### POST /api/suburbs
 
-```typescript
-{
-  suburb: string
-  state: StateCode
-  postcode: string
-}
-```
+Save a new suburb or update existing.
+
+### DELETE /api/suburbs?id={id}
+
+Delete a suburb by ID.
+
+### PUT /api/suburbs
+
+Clear all suburbs.
 
 ## Features
 
@@ -157,7 +233,7 @@ Returns list of all Australian suburbs for autocomplete.
 
 ### 4. Export
 - CSV export with all filtered data
-- Filename: `suburbs-[date].csv`
+- Filename: `housepulse-data-[date].csv`
 
 ## Bookmarklet Integration
 
@@ -186,12 +262,40 @@ npm run lint
 
 All data structures use TypeScript:
 - Strict null checks enabled
+- Zod validation at runtime
 - No `any` types used
 - Const assertions for literal unions
 
+## Design Patterns
+
+### Expandable Rows with Details
+
+```typescript
+const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
+
+const toggleExpand = useCallback((id: string) => {
+  setExpandedRows(prev => {
+    const next = new Set(prev)
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    return next
+  })
+}, [])
+```
+
+### Helper Functions for Styling
+
+```typescript
+const getYieldColorClass = (yieldValue: number): string => {
+  if (yieldValue >= 5) return 'text-green-600'
+  if (yieldValue >= 4) return 'text-yellow-600'
+  return 'text-gray-600'
+}
+```
+
 ## Future Considerations
 
-- **Database**: Currently localStorage; could migrate to Supabase/Firebase
+- **Database**: Currently file-based; could migrate to Supabase/Firebase
 - **Authentication**: No auth currently; could add user accounts
 - **Mobile**: Responsive but could optimize mobile UX further
 - **Charts**: Could add yield trend visualization
