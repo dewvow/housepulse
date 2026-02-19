@@ -97,20 +97,18 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Max Price
+            Max Price ($K)
           </label>
-          <select
-            value={filters.maxPrice || ''}
-            onChange={(e) => onChange({ ...filters, maxPrice: e.target.value ? parseInt(e.target.value) : null })}
+          <input
+            type="text"
+            value={filters.maxPrice ? Math.round(filters.maxPrice / 1000).toLocaleString() : ''}
+            onChange={(e) => {
+              const value = e.target.value.replace(/[^\d]/g, '')
+              onChange({ ...filters, maxPrice: value ? parseInt(value) * 1000 : null })
+            }}
+            placeholder="e.g. 750"
             className="w-full p-2 border border-gray-300 rounded"
-          >
-            <option value="">No limit</option>
-            <option value="500000">$500K</option>
-            <option value="750000">$750K</option>
-            <option value="1000000">$1M</option>
-            <option value="1500000">$1.5M</option>
-            <option value="2000000">$2M</option>
-          </select>
+          />
         </div>
 
         <div>
