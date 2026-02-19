@@ -1,5 +1,52 @@
 # Agent Notes
 
+## Table Design Patterns
+
+### Grouped Rows with Expandable Details
+
+For displaying grouped data (e.g., suburbs with multiple yields), use this pattern:
+
+```typescript
+// Main row shows summary (first/best item)
+// Click to expand and see all items
+
+const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
+
+const toggleExpand = useCallback((id: string) => {
+  setExpandedRows(prev => {
+    const next = new Set(prev)
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    return next
+  })
+}, [])
+```
+
+**Benefits:**
+- Reduces visual clutter
+- Allows sorting by best/average values
+- Maintains full data access via expansion
+
+### Helper Functions for Styling
+
+Extract conditional styling logic to helper functions to avoid duplication:
+
+```typescript
+const getYieldColorClass = (yieldValue: number): string => {
+  if (yieldValue >= 5) return 'text-green-600'
+  if (yieldValue >= 4) return 'text-yellow-600'
+  return 'text-gray-600'
+}
+```
+
+### Component Extraction
+
+When a component grows >300 lines, extract into sub-components:
+
+1. **Icons**: Extract SVG icons to separate file (`components/icons.tsx`)
+2. **Sub-components**: Break into logical units (Header, Row, Expanded view)
+3. **Event Handlers**: Use `useCallback` for all handlers passed to children
+
 ## Debugging Bookmarklets
 
 When debugging bookmarklets that extract data from websites (like realestate.com.au), note that:
