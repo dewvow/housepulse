@@ -1,6 +1,6 @@
 node_modules
 .next
 .env
-public/data
+# public/data
 tsconfig.tsbuildinfo
-data/
+data/census-data/

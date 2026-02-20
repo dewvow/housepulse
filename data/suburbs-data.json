@@ -1,0 +1,5302 @@
+[
+  {
+    "id": "south-melbourne-3205-vic",
+    "suburb": "South Melbourne",
+    "state": "VIC",
+    "postcode": "3205",
+    "isHot": false,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1268000,
+          "rentPrice": 750
+        },
+        "3": {
+          "buyPrice": 1997500,
+          "rentPrice": 975
+        },
+        "4+": {
+          "buyPrice": 3057000,
+          "rentPrice": 1300
+        }
+      },
+      "yield": {
+        "2": 3.0757097791798107,
+        "3": 2.5381727158948686,
+        "4+": 2.21131828590121
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 438750,
+          "rentPrice": 550
+        },
+        "2": {
+          "buyPrice": 630000,
+          "rentPrice": 700
+        },
+        "3": {
+          "buyPrice": 1060000,
+          "rentPrice": 1000
+        }
+      },
+      "yield": {
+        "1": 6.518518518518518,
+        "2": 5.777777777777778,
+        "3": 4.905660377358491
+      }
+    },
+    "dateAdded": "2026-02-18T06:39:11.796Z"
+  },
+  {
+    "id": "fitzroy-north-3068-vic",
+    "suburb": "Fitzroy North",
+    "state": "VIC",
+    "postcode": "3068",
+    "isHot": false,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1330000,
+          "rentPrice": 755
+        },
+        "3": {
+          "buyPrice": 1790000,
+          "rentPrice": 1038
+        },
+        "4+": {
+          "buyPrice": 2100000,
+          "rentPrice": 1400
+        }
+      },
+      "yield": {
+        "2": 2.95187969924812,
+        "3": 3.015418994413408,
+        "4+": 3.4666666666666663
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 410000,
+          "rentPrice": 488
+        },
+        "2": {
+          "buyPrice": 715000,
+          "rentPrice": 680
+        },
+        "3": {
+          "buyPrice": 1300000,
+          "rentPrice": 1000
+        }
+      },
+      "yield": {
+        "1": 6.189268292682927,
+        "2": 4.945454545454545,
+        "3": 4
+      }
+    },
+    "dateAdded": "2026-02-18T06:41:44.402Z",
+    "lastUpdated": "2026-02-19T02:05:57.045Z"
+  },
+  {
+    "id": "south-yarra-3141-vic",
+    "suburb": "South Yarra",
+    "state": "VIC",
+    "postcode": "3141",
+    "isHot": false,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1410000,
+          "rentPrice": 795
+        },
+        "3": {
+          "buyPrice": 2100000,
+          "rentPrice": 1150
+        },
+        "4+": {
+          "buyPrice": 2950000,
+          "rentPrice": 1500
+        }
+      },
+      "yield": {
+        "2": 2.931914893617021,
+        "3": 2.8476190476190477,
+        "4+": 2.6440677966101696
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 372500,
+          "rentPrice": 515
+        },
+        "2": {
+          "buyPrice": 629500,
+          "rentPrice": 715
+        },
+        "3": {
+          "buyPrice": 1400000,
+          "rentPrice": 1000
+        }
+      },
+      "yield": {
+        "1": 7.189261744966442,
+        "2": 5.906274821286735,
+        "3": 3.7142857142857144
+      }
+    },
+    "dateAdded": "2026-02-18T11:18:01.248Z"
+  },
+  {
+    "id": "brookdale-6112-wa",
+    "suburb": "Brookdale",
+    "state": "WA",
+    "postcode": "6112",
+    "isHot": false,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 612000,
+          "rentPrice": 473
+        },
+        "3": {
+          "buyPrice": 628800,
+          "rentPrice": 605
+        },
+        "4+": {
+          "buyPrice": 648000,
+          "rentPrice": 645
+        }
+      },
+      "yield": {
+        "2": 4.018954248366013,
+        "3": 5.003180661577608,
+        "4+": 5.1759259259259265
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-18T11:19:57.334Z",
+    "lastUpdated": "2026-02-19T02:36:00.944Z"
+  },
+  {
+    "id": "east-melbourne-3002-vic",
+    "suburb": "East Melbourne",
+    "state": "VIC",
+    "postcode": "3002",
+    "isHot": false,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1703500,
+          "rentPrice": 900
+        },
+        "3": {
+          "buyPrice": 3050000,
+          "rentPrice": 1175
+        },
+        "4+": {
+          "buyPrice": 3900000,
+          "rentPrice": 1650
+        }
+      },
+      "yield": {
+        "2": 2.7472850014675667,
+        "3": 2.00327868852459,
+        "4+": 2.1999999999999997
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 477500,
+          "rentPrice": 500
+        },
+        "2": {
+          "buyPrice": 920000,
+          "rentPrice": 750
+        },
+        "3": {
+          "buyPrice": 1525000,
+          "rentPrice": 1000
+        }
+      },
+      "yield": {
+        "1": 5.445026178010471,
+        "2": 4.239130434782608,
+        "3": 3.4098360655737707
+      }
+    },
+    "dateAdded": "2026-02-19T00:54:09.583Z",
+    "lastUpdated": "2026-02-19T02:05:32.959Z"
+  },
+  {
+    "id": "acton-7320-tas",
+    "suburb": "Acton",
+    "state": "TAS",
+    "postcode": "7320",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 429500,
+          "rentPrice": 410
+        },
+        "4+": {
+          "buyPrice": 418000,
+          "rentPrice": 465
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 4.963911525029103,
+        "4+": 5.784688995215311
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 400
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:15:03.303Z",
+    "lastUpdated": "2026-02-19T01:39:29.136Z"
+  },
+  {
+    "id": "albany-6330-wa",
+    "suburb": "Albany",
+    "state": "WA",
+    "postcode": "6330",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 805000,
+          "rentPrice": 485
+        },
+        "3": {
+          "buyPrice": 1150000,
+          "rentPrice": 600
+        },
+        "4+": {
+          "buyPrice": 1150000,
+          "rentPrice": 710
+        }
+      },
+      "yield": {
+        "2": 3.1329192546583853,
+        "3": 2.7130434782608694,
+        "4+": 3.2104347826086954
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 180000,
+          "rentPrice": 445
+        },
+        "2": {
+          "buyPrice": 318500,
+          "rentPrice": 425
+        },
+        "3": {
+          "buyPrice": 935000,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 12.855555555555556,
+        "2": 6.938775510204081,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:15:15.269Z",
+    "lastUpdated": "2026-02-19T01:18:37.766Z"
+  },
+  {
+    "id": "alkimos-6038-wa",
+    "suburb": "Alkimos",
+    "state": "WA",
+    "postcode": "6038",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 628500,
+          "rentPrice": 575
+        },
+        "3": {
+          "buyPrice": 685000,
+          "rentPrice": 630
+        },
+        "4+": {
+          "buyPrice": 835000,
+          "rentPrice": 720
+        }
+      },
+      "yield": {
+        "2": 4.757358790771678,
+        "3": 4.782481751824817,
+        "4+": 4.483832335329342
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 590000,
+          "rentPrice": 600
+        },
+        "3": {
+          "buyPrice": 627000,
+          "rentPrice": 650
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.288135593220339,
+        "3": 5.390749601275917
+      }
+    },
+    "dateAdded": "2026-02-19T01:15:39.967Z",
+    "lastUpdated": "2026-02-19T01:41:16.550Z"
+  },
+  {
+    "id": "applecross-6153-wa",
+    "suburb": "Applecross",
+    "state": "WA",
+    "postcode": "6153",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1510000,
+          "rentPrice": 775
+        },
+        "3": {
+          "buyPrice": 1772500,
+          "rentPrice": 888
+        },
+        "4+": {
+          "buyPrice": 3250000,
+          "rentPrice": 1250
+        }
+      },
+      "yield": {
+        "2": 2.6688741721854305,
+        "3": 2.6051339915373766,
+        "4+": 2
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 575000,
+          "rentPrice": 710
+        },
+        "2": {
+          "buyPrice": 926000,
+          "rentPrice": 755
+        },
+        "3": {
+          "buyPrice": 1500000,
+          "rentPrice": 950
+        }
+      },
+      "yield": {
+        "1": 6.420869565217391,
+        "2": 4.239740820734341,
+        "3": 3.2933333333333334
+      }
+    },
+    "dateAdded": "2026-02-19T01:15:49.164Z",
+    "lastUpdated": "2026-02-19T01:41:26.150Z"
+  },
+  {
+    "id": "ararat-3377-vic",
+    "suburb": "Ararat",
+    "state": "VIC",
+    "postcode": "3377",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 307500,
+          "rentPrice": 340
+        },
+        "3": {
+          "buyPrice": 372500,
+          "rentPrice": 390
+        },
+        "4+": {
+          "buyPrice": 515000,
+          "rentPrice": 475
+        }
+      },
+      "yield": {
+        "2": 5.749593495934959,
+        "3": 5.444295302013423,
+        "4+": 4.796116504854369
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 176000,
+          "rentPrice": 270
+        },
+        "2": {
+          "buyPrice": 270000,
+          "rentPrice": 338
+        },
+        "3": {
+          "buyPrice": 280000,
+          "rentPrice": 400
+        }
+      },
+      "yield": {
+        "1": 7.9772727272727275,
+        "2": 6.509629629629629,
+        "3": 7.428571428571429
+      }
+    },
+    "dateAdded": "2026-02-19T01:16:39.651Z",
+    "lastUpdated": "2026-02-19T01:18:48.001Z"
+  },
+  {
+    "id": "austral-2179-nsw",
+    "suburb": "Austral",
+    "state": "NSW",
+    "postcode": "2179",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1250000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 978500,
+          "rentPrice": 705
+        },
+        "4+": {
+          "buyPrice": 1100375,
+          "rentPrice": 770
+        }
+      },
+      "yield": {
+        "2": 2.2880000000000003,
+        "3": 3.746550843127235,
+        "4+": 3.638759513802113
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 600
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:16:49.054Z",
+    "lastUpdated": "2026-02-19T01:41:34.467Z"
+  },
+  {
+    "id": "baldivis-6171-wa",
+    "suburb": "Baldivis",
+    "state": "WA",
+    "postcode": "6171",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 522500,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 675000,
+          "rentPrice": 620
+        },
+        "4+": {
+          "buyPrice": 780000,
+          "rentPrice": 650
+        }
+      },
+      "yield": {
+        "2": 5.473684210526316,
+        "3": 4.776296296296296,
+        "4+": 4.333333333333334
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 420000,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 479500,
+          "rentPrice": 450
+        },
+        "3": {
+          "buyPrice": 604500,
+          "rentPrice": 570
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.880083420229406,
+        "3": 4.903225806451613
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T01:17:35.281Z"
+  },
+  {
+    "id": "baringa-4551-qld",
+    "suburb": "Baringa",
+    "state": "QLD",
+    "postcode": "4551",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 700000,
+          "rentPrice": 650
+        },
+        "3": {
+          "buyPrice": 795000,
+          "rentPrice": 673
+        },
+        "4+": {
+          "buyPrice": 960000,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "2": 4.828571428571428,
+        "3": 4.402012578616352,
+        "4+": 4.0625
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 580
+        },
+        "3": {
+          "buyPrice": 784650,
+          "rentPrice": 680
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 4.506467851908495
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T01:17:47.774Z"
+  },
+  {
+    "id": "bateau-bay-2261-nsw",
+    "suburb": "Bateau Bay",
+    "state": "NSW",
+    "postcode": "2261",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1325000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 1067500,
+          "rentPrice": 690
+        },
+        "4+": {
+          "buyPrice": 1300000,
+          "rentPrice": 820
+        }
+      },
+      "yield": {
+        "2": 2.158490566037736,
+        "3": 3.3611241217798593,
+        "4+": 3.2800000000000002
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 350
+        },
+        "2": {
+          "buyPrice": 640000,
+          "rentPrice": 540
+        },
+        "3": {
+          "buyPrice": 807500,
+          "rentPrice": 695
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.387499999999999,
+        "3": 4.475541795665635
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T01:18:07.834Z"
+  },
+  {
+    "id": "bathurst-2795-nsw",
+    "suburb": "Bathurst",
+    "state": "NSW",
+    "postcode": "2795",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 540000,
+          "rentPrice": 480
+        },
+        "3": {
+          "buyPrice": 667500,
+          "rentPrice": 525
+        },
+        "4+": {
+          "buyPrice": 717500,
+          "rentPrice": 605
+        }
+      },
+      "yield": {
+        "2": 4.622222222222222,
+        "3": 4.089887640449438,
+        "4+": 4.3846689895470385
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 290000,
+          "rentPrice": 320
+        },
+        "2": {
+          "buyPrice": 470000,
+          "rentPrice": 430
+        },
+        "3": {
+          "buyPrice": 565000,
+          "rentPrice": 525
+        }
+      },
+      "yield": {
+        "1": 5.7379310344827585,
+        "2": 4.757446808510638,
+        "3": 4.831858407079646
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T01:49:19.372Z"
+  },
+  {
+    "id": "battery-point-7004-tas",
+    "suburb": "Battery Point",
+    "state": "TAS",
+    "postcode": "7004",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1375000,
+          "rentPrice": 700
+        },
+        "3": {
+          "buyPrice": 1625000,
+          "rentPrice": 850
+        },
+        "4+": {
+          "buyPrice": 1850000,
+          "rentPrice": 1050
+        }
+      },
+      "yield": {
+        "2": 2.6472727272727274,
+        "3": 2.7199999999999998,
+        "4+": 2.9513513513513514
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 510000,
+          "rentPrice": 480
+        },
+        "2": {
+          "buyPrice": 750000,
+          "rentPrice": 580
+        },
+        "3": {
+          "buyPrice": 1100000,
+          "rentPrice": 778
+        }
+      },
+      "yield": {
+        "1": 4.894117647058824,
+        "2": 4.021333333333333,
+        "3": 3.677818181818182
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T01:50:15.645Z"
+  },
+  {
+    "id": "boambee-east-2452-nsw",
+    "suburb": "Boambee East",
+    "state": "NSW",
+    "postcode": "2452",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 677500,
+          "rentPrice": 523
+        },
+        "3": {
+          "buyPrice": 756500,
+          "rentPrice": 650
+        },
+        "4+": {
+          "buyPrice": 846500,
+          "rentPrice": 780
+        }
+      },
+      "yield": {
+        "2": 4.014169741697417,
+        "3": 4.467944481163252,
+        "4+": 4.791494388659185
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 620000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 620000,
+          "rentPrice": 650
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.612903225806451,
+        "3": 5.451612903225807
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T01:50:23.749Z"
+  },
+  {
+    "id": "bonython-2905-act",
+    "suburb": "Bonython",
+    "state": "ACT",
+    "postcode": "2905",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 905000,
+          "rentPrice": 543
+        },
+        "3": {
+          "buyPrice": 840000,
+          "rentPrice": 620
+        },
+        "4+": {
+          "buyPrice": 999000,
+          "rentPrice": 785
+        }
+      },
+      "yield": {
+        "2": 3.1199999999999997,
+        "3": 3.8380952380952382,
+        "4+": 4.086086086086086
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 491000,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 720000,
+          "rentPrice": 645
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.507128309572301,
+        "3": 4.658333333333333
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T01:52:48.011Z"
+  },
+  {
+    "id": "box-hill-2765-nsw",
+    "suburb": "Box Hill",
+    "state": "NSW",
+    "postcode": "2765",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 800000,
+          "rentPrice": 530
+        },
+        "3": {
+          "buyPrice": 1140000,
+          "rentPrice": 715
+        },
+        "4+": {
+          "buyPrice": 1237500,
+          "rentPrice": 800
+        }
+      },
+      "yield": {
+        "2": 3.4450000000000003,
+        "3": 3.2614035087719295,
+        "4+": 3.3616161616161615
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 470
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 720
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:00:38.543Z"
+  },
+  {
+    "id": "bray-park-4500-qld",
+    "suburb": "Bray Park",
+    "state": "QLD",
+    "postcode": "4500",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 715000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 848444,
+          "rentPrice": 610
+        },
+        "4+": {
+          "buyPrice": 920000,
+          "rentPrice": 670
+        }
+      },
+      "yield": {
+        "2": 4,
+        "3": 3.738608558726327,
+        "4+": 3.7869565217391306
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 420
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 707500,
+          "rentPrice": 650
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 4.777385159010601
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:00:47.657Z"
+  },
+  {
+    "id": "brighton-7030-tas",
+    "suburb": "Brighton",
+    "state": "TAS",
+    "postcode": "7030",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 550000,
+          "rentPrice": 430
+        },
+        "3": {
+          "buyPrice": 598000,
+          "rentPrice": 595
+        },
+        "4+": {
+          "buyPrice": 770000,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "2": 4.065454545454545,
+        "3": 5.173913043478261,
+        "4+": 5.0649350649350655
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 470000,
+          "rentPrice": 460
+        },
+        "3": {
+          "buyPrice": 575000,
+          "rentPrice": 540
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.089361702127659,
+        "3": 4.883478260869565
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:00:59.217Z"
+  },
+  {
+    "id": "broadmeadow-2292-nsw",
+    "suburb": "Broadmeadow",
+    "state": "NSW",
+    "postcode": "2292",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 800000,
+          "rentPrice": 595
+        },
+        "3": {
+          "buyPrice": 1172500,
+          "rentPrice": 700
+        },
+        "4+": {
+          "buyPrice": 1476000,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "2": 3.8675,
+        "3": 3.1044776119402986,
+        "4+": 2.642276422764228
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 545000,
+          "rentPrice": 500
+        },
+        "2": {
+          "buyPrice": 715125,
+          "rentPrice": 680
+        },
+        "3": {
+          "buyPrice": 800000,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "1": 4.770642201834862,
+        "2": 4.944590106624716,
+        "3": 4.875
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:01:12.195Z"
+  },
+  {
+    "id": "brompton-5007-sa",
+    "suburb": "Brompton",
+    "state": "SA",
+    "postcode": "5007",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 797500,
+          "rentPrice": 620
+        },
+        "3": {
+          "buyPrice": 927500,
+          "rentPrice": 683
+        },
+        "4+": {
+          "buyPrice": 1600000,
+          "rentPrice": 815
+        }
+      },
+      "yield": {
+        "2": 4.042633228840126,
+        "3": 3.8292183288409705,
+        "4+": 2.64875
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 677500,
+          "rentPrice": 570
+        },
+        "3": {
+          "buyPrice": 880000,
+          "rentPrice": 690
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.374907749077491,
+        "3": 4.077272727272727
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:01:23.947Z"
+  },
+  {
+    "id": "brooklyn-park-5032-sa",
+    "suburb": "Brooklyn Park",
+    "state": "SA",
+    "postcode": "5032",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 875000,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 1035000,
+          "rentPrice": 655
+        },
+        "4+": {
+          "buyPrice": 1210000,
+          "rentPrice": 850
+        }
+      },
+      "yield": {
+        "2": 3.0902857142857143,
+        "3": 3.2908212560386474,
+        "4+": 3.652892561983471
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 416000,
+          "rentPrice": 340
+        },
+        "2": {
+          "buyPrice": 495500,
+          "rentPrice": 470
+        },
+        "3": {
+          "buyPrice": 442506,
+          "rentPrice": 595
+        }
+      },
+      "yield": {
+        "1": 4.25,
+        "2": 4.932391523713421,
+        "3": 6.991995588760378
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:02:03.417Z"
+  },
+  {
+    "id": "brunswick-west-3055-vic",
+    "suburb": "Brunswick West",
+    "state": "VIC",
+    "postcode": "3055",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1050000,
+          "rentPrice": 650
+        },
+        "3": {
+          "buyPrice": 1283000,
+          "rentPrice": 800
+        },
+        "4+": {
+          "buyPrice": 1670000,
+          "rentPrice": 1075
+        }
+      },
+      "yield": {
+        "2": 3.219047619047619,
+        "3": 3.242400623538581,
+        "4+": 3.3473053892215567
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 329999,
+          "rentPrice": 430
+        },
+        "2": {
+          "buyPrice": 550000,
+          "rentPrice": 540
+        },
+        "3": {
+          "buyPrice": 920000,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "1": 6.7757781084185105,
+        "2": 5.1054545454545455,
+        "3": 4.239130434782608
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:02:11.713Z"
+  },
+  {
+    "id": "bundaberg-west-4670-qld",
+    "suburb": "Bundaberg West",
+    "state": "QLD",
+    "postcode": "4670",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 562000,
+          "rentPrice": 473
+        },
+        "3": {
+          "buyPrice": 602500,
+          "rentPrice": 580
+        },
+        "4+": {
+          "buyPrice": 627200,
+          "rentPrice": 585
+        }
+      },
+      "yield": {
+        "2": 4.376512455516014,
+        "3": 5.005809128630705,
+        "4+": 4.8501275510204085
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 340
+        },
+        "2": {
+          "buyPrice": 450000,
+          "rentPrice": 400
+        },
+        "3": {
+          "buyPrice": 468750,
+          "rentPrice": 483
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.622222222222222,
+        "3": 5.35808
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:02:45.120Z"
+  },
+  {
+    "id": "cairns-city-4870-qld",
+    "suburb": "Cairns City",
+    "state": "QLD",
+    "postcode": "4870",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 605725,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 610000,
+          "rentPrice": 673
+        },
+        "4+": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "2": 4.464071979858847,
+        "3": 5.737049180327869,
+        "4+": 0
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 501500,
+          "rentPrice": 500
+        },
+        "2": {
+          "buyPrice": 615000,
+          "rentPrice": 725
+        },
+        "3": {
+          "buyPrice": 849000,
+          "rentPrice": 900
+        }
+      },
+      "yield": {
+        "1": 5.18444666001994,
+        "2": 6.130081300813008,
+        "3": 5.512367491166078
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:03:55.839Z"
+  },
+  {
+    "id": "calderwood-2527-nsw",
+    "suburb": "Calderwood",
+    "state": "NSW",
+    "postcode": "2527",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 510
+        },
+        "3": {
+          "buyPrice": 912500,
+          "rentPrice": 720
+        },
+        "4+": {
+          "buyPrice": 1080000,
+          "rentPrice": 800
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 4.103013698630137,
+        "4+": 3.851851851851852
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:04:08.962Z"
+  },
+  {
+    "id": "carisbrook-3464-vic",
+    "suburb": "Carisbrook",
+    "state": "VIC",
+    "postcode": "3464",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 335000,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 438500,
+          "rentPrice": 380
+        },
+        "4+": {
+          "buyPrice": 495000,
+          "rentPrice": 510
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 4.506271379703534,
+        "4+": 5.357575757575757
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:04:16.279Z"
+  },
+  {
+    "id": "carlisle-6101-wa",
+    "suburb": "Carlisle",
+    "state": "WA",
+    "postcode": "6101",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 725000,
+          "rentPrice": 590
+        },
+        "3": {
+          "buyPrice": 915000,
+          "rentPrice": 775
+        },
+        "4+": {
+          "buyPrice": 980000,
+          "rentPrice": 850
+        }
+      },
+      "yield": {
+        "2": 4.231724137931034,
+        "3": 4.404371584699454,
+        "4+": 4.510204081632653
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 516500,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 790000,
+          "rentPrice": 700
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.537270087124879,
+        "3": 4.6075949367088604
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:04:23.598Z"
+  },
+  {
+    "id": "charlestown-2290-nsw",
+    "suburb": "Charlestown",
+    "state": "NSW",
+    "postcode": "2290",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 912500,
+          "rentPrice": 560
+        },
+        "3": {
+          "buyPrice": 985000,
+          "rentPrice": 720
+        },
+        "4+": {
+          "buyPrice": 1267501,
+          "rentPrice": 820
+        }
+      },
+      "yield": {
+        "2": 3.1912328767123284,
+        "3": 3.8010152284263956,
+        "4+": 3.364099909980347
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 525000,
+          "rentPrice": 480
+        },
+        "2": {
+          "buyPrice": 662250,
+          "rentPrice": 580
+        },
+        "3": {
+          "buyPrice": 807500,
+          "rentPrice": 705
+        }
+      },
+      "yield": {
+        "1": 4.7542857142857144,
+        "2": 4.554171385428464,
+        "3": 4.5399380804953555
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:04:31.481Z"
+  },
+  {
+    "id": "clyde-north-3978-vic",
+    "suburb": "Clyde North",
+    "state": "VIC",
+    "postcode": "3978",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 630000,
+          "rentPrice": 500
+        },
+        "3": {
+          "buyPrice": 660000,
+          "rentPrice": 550
+        },
+        "4+": {
+          "buyPrice": 765000,
+          "rentPrice": 600
+        }
+      },
+      "yield": {
+        "2": 4.1269841269841265,
+        "3": 4.333333333333334,
+        "4+": 4.07843137254902
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 650000,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:04:39.032Z"
+  },
+  {
+    "id": "cranbourne-east-3977-vic",
+    "suburb": "Cranbourne East",
+    "state": "VIC",
+    "postcode": "3977",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 660000,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 690000,
+          "rentPrice": 550
+        },
+        "4+": {
+          "buyPrice": 767500,
+          "rentPrice": 600
+        }
+      },
+      "yield": {
+        "2": 4.096969696969697,
+        "3": 4.144927536231884,
+        "4+": 4.06514657980456
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 480
+        },
+        "3": {
+          "buyPrice": 627000,
+          "rentPrice": 500
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 4.146730462519936
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:04:45.864Z"
+  },
+  {
+    "id": "denman-prospect-2611-act",
+    "suburb": "Denman Prospect",
+    "state": "ACT",
+    "postcode": "2611",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 525
+        },
+        "3": {
+          "buyPrice": 717000,
+          "rentPrice": 720
+        },
+        "4+": {
+          "buyPrice": 1294500,
+          "rentPrice": 980
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 5.2217573221757325,
+        "4+": 3.9366550791811514
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 422000,
+          "rentPrice": 500
+        },
+        "2": {
+          "buyPrice": 588750,
+          "rentPrice": 605
+        },
+        "3": {
+          "buyPrice": 750000,
+          "rentPrice": 730
+        }
+      },
+      "yield": {
+        "1": 6.161137440758294,
+        "2": 5.343524416135881,
+        "3": 5.061333333333334
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:04:52.195Z"
+  },
+  {
+    "id": "dubbo-2830-nsw",
+    "suburb": "Dubbo",
+    "state": "NSW",
+    "postcode": "2830",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 508400,
+          "rentPrice": 420
+        },
+        "3": {
+          "buyPrice": 565000,
+          "rentPrice": 520
+        },
+        "4+": {
+          "buyPrice": 710000,
+          "rentPrice": 620
+        }
+      },
+      "yield": {
+        "2": 4.295830055074744,
+        "3": 4.785840707964602,
+        "4+": 4.540845070422535
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 290
+        },
+        "2": {
+          "buyPrice": 335000,
+          "rentPrice": 380
+        },
+        "3": {
+          "buyPrice": 500000,
+          "rentPrice": 495
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.898507462686567,
+        "3": 5.148
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:04:58.782Z"
+  },
+  {
+    "id": "earlwood-2206-nsw",
+    "suburb": "Earlwood",
+    "state": "NSW",
+    "postcode": "2206",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1650000,
+          "rentPrice": 750
+        },
+        "3": {
+          "buyPrice": 2048000,
+          "rentPrice": 950
+        },
+        "4+": {
+          "buyPrice": 2400000,
+          "rentPrice": 1150
+        }
+      },
+      "yield": {
+        "2": 2.3636363636363638,
+        "3": 2.412109375,
+        "4+": 2.4916666666666667
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 625750,
+          "rentPrice": 580
+        },
+        "2": {
+          "buyPrice": 847500,
+          "rentPrice": 700
+        },
+        "3": {
+          "buyPrice": 1425000,
+          "rentPrice": 850
+        }
+      },
+      "yield": {
+        "1": 4.819816220535357,
+        "2": 4.294985250737463,
+        "3": 3.1017543859649126
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:05:04.821Z"
+  },
+  {
+    "id": "east-tamworth-2340-nsw",
+    "suburb": "East Tamworth",
+    "state": "NSW",
+    "postcode": "2340",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 556000,
+          "rentPrice": 460
+        },
+        "3": {
+          "buyPrice": 637000,
+          "rentPrice": 560
+        },
+        "4+": {
+          "buyPrice": 805000,
+          "rentPrice": 640
+        }
+      },
+      "yield": {
+        "2": 4.302158273381295,
+        "3": 4.571428571428571,
+        "4+": 4.13416149068323
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 320
+        },
+        "2": {
+          "buyPrice": 330000,
+          "rentPrice": 390
+        },
+        "3": {
+          "buyPrice": 600000,
+          "rentPrice": 490
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 6.1454545454545455,
+        "3": 4.246666666666667
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:05:12.095Z"
+  },
+  {
+    "id": "elizabeth-north-5113-sa",
+    "suburb": "Elizabeth North",
+    "state": "SA",
+    "postcode": "5113",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 431500,
+          "rentPrice": 420
+        },
+        "3": {
+          "buyPrice": 525000,
+          "rentPrice": 450
+        },
+        "4+": {
+          "buyPrice": 559500,
+          "rentPrice": 535
+        }
+      },
+      "yield": {
+        "2": 5.0614136732329085,
+        "3": 4.457142857142857,
+        "4+": 4.972296693476318
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 295
+        },
+        "2": {
+          "buyPrice": 471000,
+          "rentPrice": 430
+        },
+        "3": {
+          "buyPrice": 500000,
+          "rentPrice": 450
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.747346072186836,
+        "3": 4.68
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:05:18.493Z"
+  },
+  {
+    "id": "ellenbrook-6069-wa",
+    "suburb": "Ellenbrook",
+    "state": "WA",
+    "postcode": "6069",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 587500,
+          "rentPrice": 580
+        },
+        "3": {
+          "buyPrice": 689000,
+          "rentPrice": 670
+        },
+        "4+": {
+          "buyPrice": 800000,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "2": 5.133617021276596,
+        "3": 5.056603773584905,
+        "4+": 4.875
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 455
+        },
+        "2": {
+          "buyPrice": 500000,
+          "rentPrice": 530
+        },
+        "3": {
+          "buyPrice": 725000,
+          "rentPrice": 675
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.5120000000000005,
+        "3": 4.841379310344827
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:05:25.380Z"
+  },
+  {
+    "id": "elsternwick-3185-vic",
+    "suburb": "Elsternwick",
+    "state": "VIC",
+    "postcode": "3185",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1606000,
+          "rentPrice": 745
+        },
+        "3": {
+          "buyPrice": 1791250,
+          "rentPrice": 920
+        },
+        "4+": {
+          "buyPrice": 2740000,
+          "rentPrice": 1335
+        }
+      },
+      "yield": {
+        "2": 2.412204234122042,
+        "3": 2.67076064200977,
+        "4+": 2.5335766423357664
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 432750,
+          "rentPrice": 450
+        },
+        "2": {
+          "buyPrice": 760000,
+          "rentPrice": 590
+        },
+        "3": {
+          "buyPrice": 1299000,
+          "rentPrice": 825
+        }
+      },
+      "yield": {
+        "1": 5.407279029462738,
+        "2": 4.036842105263158,
+        "3": 3.302540415704388
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:05:39.962Z"
+  },
+  {
+    "id": "five-dock-2046-nsw",
+    "suburb": "Five Dock",
+    "state": "NSW",
+    "postcode": "2046",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 2890000,
+          "rentPrice": 878
+        },
+        "3": {
+          "buyPrice": 2450000,
+          "rentPrice": 1050
+        },
+        "4+": {
+          "buyPrice": 3250000,
+          "rentPrice": 1400
+        }
+      },
+      "yield": {
+        "2": 1.5797923875432527,
+        "3": 2.2285714285714286,
+        "4+": 2.2399999999999998
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 811000,
+          "rentPrice": 670
+        },
+        "2": {
+          "buyPrice": 1125000,
+          "rentPrice": 800
+        },
+        "3": {
+          "buyPrice": 1570000,
+          "rentPrice": 1000
+        }
+      },
+      "yield": {
+        "1": 4.295930949445129,
+        "2": 3.6977777777777776,
+        "3": 3.3121019108280256
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:05:47.682Z"
+  },
+  {
+    "id": "footscray-3011-vic",
+    "suburb": "Footscray",
+    "state": "VIC",
+    "postcode": "3011",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 827500,
+          "rentPrice": 580
+        },
+        "3": {
+          "buyPrice": 965000,
+          "rentPrice": 650
+        },
+        "4+": {
+          "buyPrice": 1240000,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "2": 3.6447129909365557,
+        "3": 3.5025906735751295,
+        "4+": 3.1451612903225805
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 345000,
+          "rentPrice": 440
+        },
+        "2": {
+          "buyPrice": 484250,
+          "rentPrice": 575
+        },
+        "3": {
+          "buyPrice": 725000,
+          "rentPrice": 700
+        }
+      },
+      "yield": {
+        "1": 6.631884057971014,
+        "2": 6.174496644295302,
+        "3": 5.020689655172414
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:06:04.213Z"
+  },
+  {
+    "id": "giralang-2617-act",
+    "suburb": "Giralang",
+    "state": "ACT",
+    "postcode": "2617",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 565000,
+          "rentPrice": 525
+        },
+        "3": {
+          "buyPrice": 870500,
+          "rentPrice": 640
+        },
+        "4+": {
+          "buyPrice": 1035000,
+          "rentPrice": 790
+        }
+      },
+      "yield": {
+        "2": 4.831858407079646,
+        "3": 3.823090178058587,
+        "4+": 3.969082125603865
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 469000,
+          "rentPrice": 480
+        },
+        "2": {
+          "buyPrice": 764000,
+          "rentPrice": 643
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 585
+        }
+      },
+      "yield": {
+        "1": 5.321961620469083,
+        "2": 4.376439790575916,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:06:10.278Z"
+  },
+  {
+    "id": "griffin-4503-qld",
+    "suburb": "Griffin",
+    "state": "QLD",
+    "postcode": "4503",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1055000,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 830000,
+          "rentPrice": 630
+        },
+        "4+": {
+          "buyPrice": 950000,
+          "rentPrice": 690
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 3.9469879518072286,
+        "4+": 3.7768421052631576
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 450
+        },
+        "2": {
+          "buyPrice": 642750,
+          "rentPrice": 450
+        },
+        "3": {
+          "buyPrice": 671350,
+          "rentPrice": 580
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 3.6406067677946323,
+        "3": 4.49244060475162
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:06:19.142Z"
+  },
+  {
+    "id": "grovedale-3216-vic",
+    "suburb": "Grovedale",
+    "state": "VIC",
+    "postcode": "3216",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 585000,
+          "rentPrice": 460
+        },
+        "3": {
+          "buyPrice": 680000,
+          "rentPrice": 500
+        },
+        "4+": {
+          "buyPrice": 750000,
+          "rentPrice": 593
+        }
+      },
+      "yield": {
+        "2": 4.0888888888888895,
+        "3": 3.823529411764706,
+        "4+": 4.111466666666667
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 490000,
+          "rentPrice": 340
+        },
+        "2": {
+          "buyPrice": 505000,
+          "rentPrice": 440
+        },
+        "3": {
+          "buyPrice": 555500,
+          "rentPrice": 493
+        }
+      },
+      "yield": {
+        "1": 3.6081632653061226,
+        "2": 4.53069306930693,
+        "3": 4.614941494149415
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:06:26.578Z"
+  },
+  {
+    "id": "herne-hill-3218-vic",
+    "suburb": "Herne Hill",
+    "state": "VIC",
+    "postcode": "3218",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 690000,
+          "rentPrice": 420
+        },
+        "3": {
+          "buyPrice": 745000,
+          "rentPrice": 500
+        },
+        "4+": {
+          "buyPrice": 855000,
+          "rentPrice": 610
+        }
+      },
+      "yield": {
+        "2": 3.165217391304348,
+        "3": 3.48993288590604,
+        "4+": 3.709941520467836
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 300000,
+          "rentPrice": 340
+        },
+        "2": {
+          "buyPrice": 450000,
+          "rentPrice": 400
+        },
+        "3": {
+          "buyPrice": 680000,
+          "rentPrice": 540
+        }
+      },
+      "yield": {
+        "1": 5.893333333333333,
+        "2": 4.622222222222222,
+        "3": 4.129411764705882
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:06:34.000Z"
+  },
+  {
+    "id": "herston-4006-qld",
+    "suburb": "Herston",
+    "state": "QLD",
+    "postcode": "4006",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 620000,
+          "rentPrice": 650
+        },
+        "3": {
+          "buyPrice": 1825000,
+          "rentPrice": 760
+        },
+        "4+": {
+          "buyPrice": 1600000,
+          "rentPrice": 1175
+        }
+      },
+      "yield": {
+        "2": 5.451612903225807,
+        "3": 2.165479452054795,
+        "4+": 3.81875
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 556000,
+          "rentPrice": 500
+        },
+        "2": {
+          "buyPrice": 810000,
+          "rentPrice": 620
+        },
+        "3": {
+          "buyPrice": 792000,
+          "rentPrice": 725
+        }
+      },
+      "yield": {
+        "1": 4.676258992805756,
+        "2": 3.9802469135802467,
+        "3": 4.76010101010101
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:06:41.797Z"
+  },
+  {
+    "id": "highfields-4352-qld",
+    "suburb": "Highfields",
+    "state": "QLD",
+    "postcode": "4352",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 650000,
+          "rentPrice": 530
+        },
+        "3": {
+          "buyPrice": 880000,
+          "rentPrice": 620
+        },
+        "4+": {
+          "buyPrice": 991500,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "2": 4.24,
+        "3": 3.663636363636363,
+        "4+": 3.9334341906202726
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 500000,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 780000,
+          "rentPrice": 550
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 3.6666666666666665
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:06:48.179Z"
+  },
+  {
+    "id": "hornsby-2077-nsw",
+    "suburb": "Hornsby",
+    "state": "NSW",
+    "postcode": "2077",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1449000,
+          "rentPrice": 630
+        },
+        "3": {
+          "buyPrice": 1650000,
+          "rentPrice": 848
+        },
+        "4+": {
+          "buyPrice": 1850000,
+          "rentPrice": 970
+        }
+      },
+      "yield": {
+        "2": 2.2608695652173916,
+        "3": 2.6724848484848485,
+        "4+": 2.726486486486486
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 565000,
+          "rentPrice": 550
+        },
+        "2": {
+          "buyPrice": 725000,
+          "rentPrice": 648
+        },
+        "3": {
+          "buyPrice": 1017500,
+          "rentPrice": 810
+        }
+      },
+      "yield": {
+        "1": 5.061946902654867,
+        "2": 4.647724137931034,
+        "3": 4.139557739557739
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:06:55.850Z"
+  },
+  {
+    "id": "huntly-3551-vic",
+    "suburb": "Huntly",
+    "state": "VIC",
+    "postcode": "3551",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 550000,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 600000,
+          "rentPrice": 490
+        },
+        "4+": {
+          "buyPrice": 640500,
+          "rentPrice": 530
+        }
+      },
+      "yield": {
+        "2": 4.916363636363636,
+        "3": 4.246666666666667,
+        "4+": 4.302888368462139
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 489950,
+          "rentPrice": 460
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.882130829676497,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:07:02.829Z"
+  },
+  {
+    "id": "invermay-7248-tas",
+    "suburb": "Invermay",
+    "state": "TAS",
+    "postcode": "7248",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 450500,
+          "rentPrice": 458
+        },
+        "3": {
+          "buyPrice": 500000,
+          "rentPrice": 490
+        },
+        "4+": {
+          "buyPrice": 572500,
+          "rentPrice": 520
+        }
+      },
+      "yield": {
+        "2": 5.286570477247503,
+        "3": 5.096,
+        "4+": 4.7231441048034934
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 240000,
+          "rentPrice": 300
+        },
+        "2": {
+          "buyPrice": 435000,
+          "rentPrice": 380
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 515
+        }
+      },
+      "yield": {
+        "1": 6.5,
+        "2": 4.542528735632184,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:07:09.791Z"
+  },
+  {
+    "id": "kennington-3550-vic",
+    "suburb": "Kennington",
+    "state": "VIC",
+    "postcode": "3550",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 495000,
+          "rentPrice": 445
+        },
+        "3": {
+          "buyPrice": 620000,
+          "rentPrice": 500
+        },
+        "4+": {
+          "buyPrice": 710000,
+          "rentPrice": 560
+        }
+      },
+      "yield": {
+        "2": 4.674747474747474,
+        "3": 4.193548387096775,
+        "4+": 4.101408450704225
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 500000,
+          "rentPrice": 368
+        },
+        "2": {
+          "buyPrice": 443000,
+          "rentPrice": 393
+        },
+        "3": {
+          "buyPrice": 690000,
+          "rentPrice": 460
+        }
+      },
+      "yield": {
+        "1": 3.8272,
+        "2": 4.613092550790068,
+        "3": 3.4666666666666663
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:07:16.179Z"
+  },
+  {
+    "id": "kingston-7050-tas",
+    "suburb": "Kingston",
+    "state": "TAS",
+    "postcode": "7050",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 475000,
+          "rentPrice": 495
+        },
+        "3": {
+          "buyPrice": 705000,
+          "rentPrice": 615
+        },
+        "4+": {
+          "buyPrice": 886000,
+          "rentPrice": 745
+        }
+      },
+      "yield": {
+        "2": 5.418947368421052,
+        "3": 4.536170212765957,
+        "4+": 4.3724604966139955
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 431000,
+          "rentPrice": 280
+        },
+        "2": {
+          "buyPrice": 587500,
+          "rentPrice": 480
+        },
+        "3": {
+          "buyPrice": 676000,
+          "rentPrice": 610
+        }
+      },
+      "yield": {
+        "1": 3.3781902552204173,
+        "2": 4.248510638297873,
+        "3": 4.6923076923076925
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:07:23.530Z"
+  },
+  {
+    "id": "lalor-3075-vic",
+    "suburb": "Lalor",
+    "state": "VIC",
+    "postcode": "3075",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 707500,
+          "rentPrice": 478
+        },
+        "3": {
+          "buyPrice": 755000,
+          "rentPrice": 520
+        },
+        "4+": {
+          "buyPrice": 820000,
+          "rentPrice": 593
+        }
+      },
+      "yield": {
+        "2": 3.5132155477031803,
+        "3": 3.581456953642384,
+        "4+": 3.760487804878049
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 545000,
+          "rentPrice": 400
+        },
+        "2": {
+          "buyPrice": 528500,
+          "rentPrice": 475
+        },
+        "3": {
+          "buyPrice": 593500,
+          "rentPrice": 515
+        }
+      },
+      "yield": {
+        "1": 3.81651376146789,
+        "2": 4.67360454115421,
+        "3": 4.512215669755686
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:07:30.096Z"
+  },
+  {
+    "id": "legana-7277-tas",
+    "suburb": "Legana",
+    "state": "TAS",
+    "postcode": "7277",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 517500,
+          "rentPrice": 430
+        },
+        "3": {
+          "buyPrice": 605000,
+          "rentPrice": 523
+        },
+        "4+": {
+          "buyPrice": 790000,
+          "rentPrice": 650
+        }
+      },
+      "yield": {
+        "2": 4.320772946859903,
+        "3": 4.495206611570248,
+        "4+": 4.2784810126582276
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 560
+        },
+        "2": {
+          "buyPrice": 515000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 602000,
+          "rentPrice": 550
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.5533980582524265,
+        "3": 4.750830564784053
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:07:36.861Z"
+  },
+  {
+    "id": "leppington-2179-nsw",
+    "suburb": "Leppington",
+    "state": "NSW",
+    "postcode": "2179",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 860000,
+          "rentPrice": 525
+        },
+        "3": {
+          "buyPrice": 1080000,
+          "rentPrice": 730
+        },
+        "4+": {
+          "buyPrice": 1205000,
+          "rentPrice": 800
+        }
+      },
+      "yield": {
+        "2": 3.1744186046511627,
+        "3": 3.514814814814815,
+        "4+": 3.4522821576763487
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 462500,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:07:43.668Z"
+  },
+  {
+    "id": "lilydale-3140-vic",
+    "suburb": "Lilydale",
+    "state": "VIC",
+    "postcode": "3140",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 605000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 800000,
+          "rentPrice": 620
+        },
+        "4+": {
+          "buyPrice": 1095000,
+          "rentPrice": 740
+        }
+      },
+      "yield": {
+        "2": 4.7272727272727275,
+        "3": 4.03,
+        "4+": 3.5141552511415526
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 482500,
+          "rentPrice": 430
+        },
+        "2": {
+          "buyPrice": 592000,
+          "rentPrice": 540
+        },
+        "3": {
+          "buyPrice": 705000,
+          "rentPrice": 645
+        }
+      },
+      "yield": {
+        "1": 4.63419689119171,
+        "2": 4.743243243243243,
+        "3": 4.757446808510638
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:00.195Z"
+  },
+  {
+    "id": "little-bay-2036-nsw",
+    "suburb": "Little Bay",
+    "state": "NSW",
+    "postcode": "2036",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 2810000,
+          "rentPrice": 940
+        },
+        "3": {
+          "buyPrice": 2300000,
+          "rentPrice": 1500
+        },
+        "4+": {
+          "buyPrice": 2891000,
+          "rentPrice": 1650
+        }
+      },
+      "yield": {
+        "2": 1.7395017793594307,
+        "3": 3.3913043478260874,
+        "4+": 2.967831200276721
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 860000,
+          "rentPrice": 800
+        },
+        "2": {
+          "buyPrice": 1622500,
+          "rentPrice": 1050
+        },
+        "3": {
+          "buyPrice": 2100000,
+          "rentPrice": 1425
+        }
+      },
+      "yield": {
+        "1": 4.837209302325581,
+        "2": 3.3651771956856704,
+        "3": 3.528571428571429
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:07.115Z"
+  },
+  {
+    "id": "logan-central-4114-qld",
+    "suburb": "Logan Central",
+    "state": "QLD",
+    "postcode": "4114",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1050000,
+          "rentPrice": 460
+        },
+        "3": {
+          "buyPrice": 715000,
+          "rentPrice": 550
+        },
+        "4+": {
+          "buyPrice": 784000,
+          "rentPrice": 620
+        }
+      },
+      "yield": {
+        "2": 2.278095238095238,
+        "3": 4,
+        "4+": 4.112244897959184
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 395000,
+          "rentPrice": 360
+        },
+        "2": {
+          "buyPrice": 446000,
+          "rentPrice": 410
+        },
+        "3": {
+          "buyPrice": 451000,
+          "rentPrice": 505
+        }
+      },
+      "yield": {
+        "1": 4.739240506329114,
+        "2": 4.780269058295964,
+        "3": 5.822616407982261
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:15.096Z"
+  },
+  {
+    "id": "lowood-4311-qld",
+    "suburb": "Lowood",
+    "state": "QLD",
+    "postcode": "4311",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 677500,
+          "rentPrice": 383
+        },
+        "3": {
+          "buyPrice": 639000,
+          "rentPrice": 550
+        },
+        "4+": {
+          "buyPrice": 694500,
+          "rentPrice": 550
+        }
+      },
+      "yield": {
+        "2": 2.939630996309963,
+        "3": 4.475743348982785,
+        "4+": 4.1180705543556515
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 250
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 346
+        },
+        "3": {
+          "buyPrice": 622500,
+          "rentPrice": 450
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 3.7590361445783134
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:24.013Z"
+  },
+  {
+    "id": "mackay-4740-qld",
+    "suburb": "Mackay",
+    "state": "QLD",
+    "postcode": "4740",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 517500,
+          "rentPrice": 510
+        },
+        "3": {
+          "buyPrice": 580000,
+          "rentPrice": 585
+        },
+        "4+": {
+          "buyPrice": 672500,
+          "rentPrice": 555
+        }
+      },
+      "yield": {
+        "2": 5.12463768115942,
+        "3": 5.244827586206897,
+        "4+": 4.291449814126394
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 320000,
+          "rentPrice": 385
+        },
+        "2": {
+          "buyPrice": 352000,
+          "rentPrice": 480
+        },
+        "3": {
+          "buyPrice": 580500,
+          "rentPrice": 620
+        }
+      },
+      "yield": {
+        "1": 6.25625,
+        "2": 7.090909090909091,
+        "3": 5.553832902670112
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:30.282Z"
+  },
+  {
+    "id": "melba-2615-act",
+    "suburb": "Melba",
+    "state": "ACT",
+    "postcode": "2615",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 606500,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 865000,
+          "rentPrice": 680
+        },
+        "4+": {
+          "buyPrice": 997500,
+          "rentPrice": 755
+        }
+      },
+      "yield": {
+        "2": 4.458367683429514,
+        "3": 4.0878612716763,
+        "4+": 3.935839598997494
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 420000,
+          "rentPrice": 480
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 650
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.942857142857143,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:37.121Z"
+  },
+  {
+    "id": "mildura-3500-vic",
+    "suburb": "Mildura",
+    "state": "VIC",
+    "postcode": "3500",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 420500,
+          "rentPrice": 400
+        },
+        "3": {
+          "buyPrice": 516000,
+          "rentPrice": 490
+        },
+        "4+": {
+          "buyPrice": 635000,
+          "rentPrice": 590
+        }
+      },
+      "yield": {
+        "2": 4.946492271105826,
+        "3": 4.937984496124031,
+        "4+": 4.831496062992126
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 299500,
+          "rentPrice": 285
+        },
+        "2": {
+          "buyPrice": 312500,
+          "rentPrice": 360
+        },
+        "3": {
+          "buyPrice": 450000,
+          "rentPrice": 480
+        }
+      },
+      "yield": {
+        "1": 4.948247078464107,
+        "2": 5.9904,
+        "3": 5.546666666666667
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:43.329Z"
+  },
+  {
+    "id": "millner-0810-nt",
+    "suburb": "Millner",
+    "state": "NT",
+    "postcode": "0810",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 590000,
+          "rentPrice": 650
+        },
+        "4+": {
+          "buyPrice": 680000,
+          "rentPrice": 720
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 5.728813559322034,
+        "4+": 5.5058823529411764
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 205000,
+          "rentPrice": 400
+        },
+        "2": {
+          "buyPrice": 345000,
+          "rentPrice": 540
+        },
+        "3": {
+          "buyPrice": 475000,
+          "rentPrice": 575
+        }
+      },
+      "yield": {
+        "1": 10.146341463414634,
+        "2": 8.139130434782608,
+        "3": 6.294736842105262
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:52.174Z"
+  },
+  {
+    "id": "mount-waverley-3149-vic",
+    "suburb": "Mount Waverley",
+    "state": "VIC",
+    "postcode": "3149",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1525750,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 1515000,
+          "rentPrice": 650
+        },
+        "4+": {
+          "buyPrice": 1700000,
+          "rentPrice": 850
+        }
+      },
+      "yield": {
+        "2": 1.8744879567425856,
+        "3": 2.231023102310231,
+        "4+": 2.6
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 782000,
+          "rentPrice": 485
+        },
+        "2": {
+          "buyPrice": 786500,
+          "rentPrice": 560
+        },
+        "3": {
+          "buyPrice": 1150000,
+          "rentPrice": 700
+        }
+      },
+      "yield": {
+        "1": 3.2250639386189257,
+        "2": 3.7024793388429753,
+        "3": 3.165217391304348
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:08:59.074Z"
+  },
+  {
+    "id": "murray-bridge-5253-sa",
+    "suburb": "Murray Bridge",
+    "state": "SA",
+    "postcode": "5253",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 450000,
+          "rentPrice": 423
+        },
+        "3": {
+          "buyPrice": 537000,
+          "rentPrice": 470
+        },
+        "4+": {
+          "buyPrice": 617500,
+          "rentPrice": 540
+        }
+      },
+      "yield": {
+        "2": 4.888,
+        "3": 4.5512104283054,
+        "4+": 4.5473684210526315
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 272500,
+          "rentPrice": 280
+        },
+        "2": {
+          "buyPrice": 403750,
+          "rentPrice": 360
+        },
+        "3": {
+          "buyPrice": 535000,
+          "rentPrice": 450
+        }
+      },
+      "yield": {
+        "1": 5.343119266055045,
+        "2": 4.636532507739938,
+        "3": 4.373831775700935
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:09:05.077Z"
+  },
+  {
+    "id": "new-norfolk-7140-tas",
+    "suburb": "New Norfolk",
+    "state": "TAS",
+    "postcode": "7140",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 449000,
+          "rentPrice": 450
+        },
+        "3": {
+          "buyPrice": 480000,
+          "rentPrice": 495
+        },
+        "4+": {
+          "buyPrice": 575000,
+          "rentPrice": 618
+        }
+      },
+      "yield": {
+        "2": 5.211581291759466,
+        "3": 5.3625,
+        "4+": 5.588869565217392
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 303
+        },
+        "2": {
+          "buyPrice": 410000,
+          "rentPrice": 380
+        },
+        "3": {
+          "buyPrice": 503500,
+          "rentPrice": 500
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.819512195121951,
+        "3": 5.163853028798411
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:09:11.481Z"
+  },
+  {
+    "id": "newtown-2042-nsw",
+    "suburb": "Newtown",
+    "state": "NSW",
+    "postcode": "2042",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1650000,
+          "rentPrice": 875
+        },
+        "3": {
+          "buyPrice": 2200000,
+          "rentPrice": 1200
+        },
+        "4+": {
+          "buyPrice": 2818000,
+          "rentPrice": 1575
+        }
+      },
+      "yield": {
+        "2": 2.757575757575758,
+        "3": 2.8363636363636364,
+        "4+": 2.906316536550745
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 732500,
+          "rentPrice": 630
+        },
+        "2": {
+          "buyPrice": 1225000,
+          "rentPrice": 820
+        },
+        "3": {
+          "buyPrice": 1565000,
+          "rentPrice": 1150
+        }
+      },
+      "yield": {
+        "1": 4.47235494880546,
+        "2": 3.4808163265306122,
+        "3": 3.8210862619808306
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:09:18.365Z"
+  },
+  {
+    "id": "nollamara-6061-wa",
+    "suburb": "Nollamara",
+    "state": "WA",
+    "postcode": "6061",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 708750,
+          "rentPrice": 618
+        },
+        "3": {
+          "buyPrice": 720000,
+          "rentPrice": 700
+        },
+        "4+": {
+          "buyPrice": 875000,
+          "rentPrice": 850
+        }
+      },
+      "yield": {
+        "2": 4.534179894179894,
+        "3": 5.055555555555555,
+        "4+": 5.051428571428572
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 555444,
+          "rentPrice": 503
+        },
+        "2": {
+          "buyPrice": 510000,
+          "rentPrice": 625
+        },
+        "3": {
+          "buyPrice": 661000,
+          "rentPrice": 700
+        }
+      },
+      "yield": {
+        "1": 4.709025572334925,
+        "2": 6.372549019607843,
+        "3": 5.506807866868381
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:09:23.911Z"
+  },
+  {
+    "id": "o'connor-2602-act",
+    "suburb": "O'Connor",
+    "state": "ACT",
+    "postcode": "2602",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "4+": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 0,
+        "4+": 0
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z"
+  },
+  {
+    "id": "oakleigh-3166-vic",
+    "suburb": "Oakleigh",
+    "state": "VIC",
+    "postcode": "3166",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1085500,
+          "rentPrice": 597
+        },
+        "3": {
+          "buyPrice": 1351000,
+          "rentPrice": 660
+        },
+        "4+": {
+          "buyPrice": 1500000,
+          "rentPrice": 808
+        }
+      },
+      "yield": {
+        "2": 2.859880239520958,
+        "3": 2.540340488527017,
+        "4+": 2.801066666666667
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 383000,
+          "rentPrice": 520
+        },
+        "2": {
+          "buyPrice": 549190,
+          "rentPrice": 630
+        },
+        "3": {
+          "buyPrice": 955000,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "1": 7.060052219321149,
+        "2": 5.965148673500974,
+        "3": 4.0837696335078535
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:09:44.916Z"
+  },
+  {
+    "id": "old-noarlunga-5168-sa",
+    "suburb": "Old Noarlunga",
+    "state": "SA",
+    "postcode": "5168",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 937500,
+          "rentPrice": 480
+        },
+        "3": {
+          "buyPrice": 715000,
+          "rentPrice": 580
+        },
+        "4+": {
+          "buyPrice": 1002000,
+          "rentPrice": 668
+        }
+      },
+      "yield": {
+        "2": 2.6624,
+        "3": 4.218181818181818,
+        "4+": 3.4666666666666663
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:09:51.446Z"
+  },
+  {
+    "id": "ovingham-5082-sa",
+    "suburb": "Ovingham",
+    "state": "SA",
+    "postcode": "5082",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 840000,
+          "rentPrice": 500
+        },
+        "3": {
+          "buyPrice": 895000,
+          "rentPrice": 750
+        },
+        "4+": {
+          "buyPrice": 1655500,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "2": 3.0952380952380953,
+        "3": 4.357541899441341,
+        "4+": 0
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 400000,
+          "rentPrice": 375
+        },
+        "2": {
+          "buyPrice": 462779,
+          "rentPrice": 490
+        },
+        "3": {
+          "buyPrice": 747500,
+          "rentPrice": 538
+        }
+      },
+      "yield": {
+        "1": 4.875,
+        "2": 5.505867811633631,
+        "3": 3.7426086956521742
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:09:58.197Z"
+  },
+  {
+    "id": "parap-0820-nt",
+    "suburb": "Parap",
+    "state": "NT",
+    "postcode": "0820",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 580
+        },
+        "3": {
+          "buyPrice": 802500,
+          "rentPrice": 790
+        },
+        "4+": {
+          "buyPrice": 1120000,
+          "rentPrice": 900
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 5.119003115264798,
+        "4+": 4.178571428571429
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 321250,
+          "rentPrice": 465
+        },
+        "2": {
+          "buyPrice": 453000,
+          "rentPrice": 598
+        },
+        "3": {
+          "buyPrice": 597500,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "1": 7.526848249027237,
+        "2": 6.864459161147902,
+        "3": 6.527196652719665
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:10:04.345Z"
+  },
+  {
+    "id": "petrie-4502-qld",
+    "suburb": "Petrie",
+    "state": "QLD",
+    "postcode": "4502",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 725000,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 855000,
+          "rentPrice": 600
+        },
+        "4+": {
+          "buyPrice": 1002000,
+          "rentPrice": 688
+        }
+      },
+      "yield": {
+        "2": 3.7296551724137936,
+        "3": 3.6491228070175437,
+        "4+": 3.5704590818363275
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 506250,
+          "rentPrice": 300
+        },
+        "2": {
+          "buyPrice": 600000,
+          "rentPrice": 505
+        },
+        "3": {
+          "buyPrice": 630000,
+          "rentPrice": 555
+        }
+      },
+      "yield": {
+        "1": 3.0814814814814815,
+        "2": 4.376666666666667,
+        "3": 4.580952380952381
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:10:11.360Z"
+  },
+  {
+    "id": "plainland-4341-qld",
+    "suburb": "Plainland",
+    "state": "QLD",
+    "postcode": "4341",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 500
+        },
+        "3": {
+          "buyPrice": 700000,
+          "rentPrice": 623
+        },
+        "4+": {
+          "buyPrice": 800000,
+          "rentPrice": 680
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 4.628,
+        "4+": 4.42
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 560
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:10:18.928Z"
+  },
+  {
+    "id": "port-adelaide-5015-sa",
+    "suburb": "Port Adelaide",
+    "state": "SA",
+    "postcode": "5015",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 682500,
+          "rentPrice": 615
+        },
+        "3": {
+          "buyPrice": 925000,
+          "rentPrice": 668
+        },
+        "4+": {
+          "buyPrice": 833500,
+          "rentPrice": 740
+        }
+      },
+      "yield": {
+        "2": 4.685714285714285,
+        "3": 3.7552432432432434,
+        "4+": 4.616676664667066
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 670500,
+          "rentPrice": 500
+        },
+        "2": {
+          "buyPrice": 620000,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 500000,
+          "rentPrice": 653
+        }
+      },
+      "yield": {
+        "1": 3.877703206562267,
+        "2": 4.361290322580645,
+        "3": 6.7912
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:10:25.947Z"
+  },
+  {
+    "id": "port-melbourne-3207-vic",
+    "suburb": "Port Melbourne",
+    "state": "VIC",
+    "postcode": "3207",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1255000,
+          "rentPrice": 750
+        },
+        "3": {
+          "buyPrice": 1640000,
+          "rentPrice": 980
+        },
+        "4+": {
+          "buyPrice": 2350000,
+          "rentPrice": 1200
+        }
+      },
+      "yield": {
+        "2": 3.1075697211155378,
+        "3": 3.107317073170732,
+        "4+": 2.65531914893617
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 500000,
+          "rentPrice": 550
+        },
+        "2": {
+          "buyPrice": 742500,
+          "rentPrice": 730
+        },
+        "3": {
+          "buyPrice": 1575000,
+          "rentPrice": 1100
+        }
+      },
+      "yield": {
+        "1": 5.72,
+        "2": 5.112457912457912,
+        "3": 3.6317460317460317
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:10:32.580Z"
+  },
+  {
+    "id": "rapid-creek-0810-nt",
+    "suburb": "Rapid Creek",
+    "state": "NT",
+    "postcode": "0810",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 590000,
+          "rentPrice": 625
+        },
+        "3": {
+          "buyPrice": 750000,
+          "rentPrice": 675
+        },
+        "4+": {
+          "buyPrice": 1095000,
+          "rentPrice": 890
+        }
+      },
+      "yield": {
+        "2": 5.508474576271186,
+        "3": 4.68,
+        "4+": 4.22648401826484
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 220000,
+          "rentPrice": 355
+        },
+        "2": {
+          "buyPrice": 430000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 562500,
+          "rentPrice": 785
+        }
+      },
+      "yield": {
+        "1": 8.39090909090909,
+        "2": 6.651162790697675,
+        "3": 7.256888888888889
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:10:39.758Z"
+  },
+  {
+    "id": "redfern-2016-nsw",
+    "suburb": "Redfern",
+    "state": "NSW",
+    "postcode": "2016",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1742500,
+          "rentPrice": 900
+        },
+        "3": {
+          "buyPrice": 2250000,
+          "rentPrice": 1150
+        },
+        "4+": {
+          "buyPrice": 3550000,
+          "rentPrice": 1475
+        }
+      },
+      "yield": {
+        "2": 2.6857962697274034,
+        "3": 2.6577777777777776,
+        "4+": 2.1605633802816904
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 830000,
+          "rentPrice": 725
+        },
+        "2": {
+          "buyPrice": 1190000,
+          "rentPrice": 950
+        },
+        "3": {
+          "buyPrice": 1887500,
+          "rentPrice": 1250
+        }
+      },
+      "yield": {
+        "1": 4.542168674698796,
+        "2": 4.151260504201681,
+        "3": 3.443708609271523
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:10:46.258Z"
+  },
+  {
+    "id": "renmark-5341-sa",
+    "suburb": "Renmark",
+    "state": "SA",
+    "postcode": "5341",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 317500,
+          "rentPrice": 380
+        },
+        "3": {
+          "buyPrice": 435000,
+          "rentPrice": 410
+        },
+        "4+": {
+          "buyPrice": 650000,
+          "rentPrice": 535
+        }
+      },
+      "yield": {
+        "2": 6.223622047244095,
+        "3": 4.901149425287357,
+        "4+": 4.279999999999999
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 260000,
+          "rentPrice": 313
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 6.260000000000001,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:10:53.848Z"
+  },
+  {
+    "id": "ringwood-east-3135-vic",
+    "suburb": "Ringwood East",
+    "state": "VIC",
+    "postcode": "3135",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 827500,
+          "rentPrice": 545
+        },
+        "3": {
+          "buyPrice": 987825,
+          "rentPrice": 610
+        },
+        "4+": {
+          "buyPrice": 1147500,
+          "rentPrice": 750
+        }
+      },
+      "yield": {
+        "2": 3.424773413897281,
+        "3": 3.2110950826310325,
+        "4+": 3.3986928104575163
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 645000,
+          "rentPrice": 450
+        },
+        "2": {
+          "buyPrice": 687000,
+          "rentPrice": 505
+        },
+        "3": {
+          "buyPrice": 830000,
+          "rentPrice": 670
+        }
+      },
+      "yield": {
+        "1": 3.627906976744186,
+        "2": 3.822416302765648,
+        "3": 4.1975903614457835
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:11:01.265Z"
+  },
+  {
+    "id": "ripley-4306-qld",
+    "suburb": "Ripley",
+    "state": "QLD",
+    "postcode": "4306",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 600000,
+          "rentPrice": 505
+        },
+        "3": {
+          "buyPrice": 720000,
+          "rentPrice": 550
+        },
+        "4+": {
+          "buyPrice": 830000,
+          "rentPrice": 625
+        }
+      },
+      "yield": {
+        "2": 4.376666666666667,
+        "3": 3.9722222222222223,
+        "4+": 3.91566265060241
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 385
+        },
+        "2": {
+          "buyPrice": 564000,
+          "rentPrice": 470
+        },
+        "3": {
+          "buyPrice": 675000,
+          "rentPrice": 520
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.333333333333334,
+        "3": 4.005925925925926
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:11:07.730Z"
+  },
+  {
+    "id": "rockingham-6168-wa",
+    "suburb": "Rockingham",
+    "state": "WA",
+    "postcode": "6168",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 695000,
+          "rentPrice": 500
+        },
+        "3": {
+          "buyPrice": 722000,
+          "rentPrice": 590
+        },
+        "4+": {
+          "buyPrice": 862500,
+          "rentPrice": 650
+        }
+      },
+      "yield": {
+        "2": 3.741007194244604,
+        "3": 4.249307479224377,
+        "4+": 3.918840579710145
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 444500,
+          "rentPrice": 500
+        },
+        "2": {
+          "buyPrice": 482500,
+          "rentPrice": 530
+        },
+        "3": {
+          "buyPrice": 610000,
+          "rentPrice": 630
+        }
+      },
+      "yield": {
+        "1": 5.849268841394826,
+        "2": 5.711917098445596,
+        "3": 5.370491803278689
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:11:14.730Z"
+  },
+  {
+    "id": "rosebery-2018-nsw",
+    "suburb": "Rosebery",
+    "state": "NSW",
+    "postcode": "2018",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 985000,
+          "rentPrice": 873
+        },
+        "3": {
+          "buyPrice": 2249500,
+          "rentPrice": 1300
+        },
+        "4+": {
+          "buyPrice": 3175000,
+          "rentPrice": 1650
+        }
+      },
+      "yield": {
+        "2": 4.608730964467005,
+        "3": 3.005112247166037,
+        "4+": 2.7023622047244094
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 694000,
+          "rentPrice": 783
+        },
+        "2": {
+          "buyPrice": 925000,
+          "rentPrice": 1020
+        },
+        "3": {
+          "buyPrice": 1390000,
+          "rentPrice": 1400
+        }
+      },
+      "yield": {
+        "1": 5.86685878962536,
+        "2": 5.734054054054054,
+        "3": 5.2374100719424455
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:11:24.297Z"
+  },
+  {
+    "id": "rosebery-0832-nt",
+    "suburb": "Rosebery",
+    "state": "NT",
+    "postcode": "0832",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 450000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 620000,
+          "rentPrice": 675
+        },
+        "4+": {
+          "buyPrice": 707500,
+          "rentPrice": 770
+        }
+      },
+      "yield": {
+        "2": 6.355555555555556,
+        "3": 5.661290322580645,
+        "4+": 5.659363957597173
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 488
+        },
+        "2": {
+          "buyPrice": 340000,
+          "rentPrice": 550
+        },
+        "3": {
+          "buyPrice": 480000,
+          "rentPrice": 610
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 8.411764705882353,
+        "3": 6.6083333333333325
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:11:31.764Z"
+  },
+  {
+    "id": "sans-souci-2217-nsw",
+    "suburb": "Sans Souci",
+    "state": "NSW",
+    "postcode": "2217",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "4+": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 0,
+        "4+": 0
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z"
+  },
+  {
+    "id": "silverdale-2752-nsw",
+    "suburb": "Silverdale",
+    "state": "NSW",
+    "postcode": "2752",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 460
+        },
+        "3": {
+          "buyPrice": 1095000,
+          "rentPrice": 650
+        },
+        "4+": {
+          "buyPrice": 1360000,
+          "rentPrice": 810
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 3.08675799086758,
+        "4+": 3.097058823529412
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:11:45.579Z"
+  },
+  {
+    "id": "sorell-7172-tas",
+    "suburb": "Sorell",
+    "state": "TAS",
+    "postcode": "7172",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 542500,
+          "rentPrice": 470
+        },
+        "3": {
+          "buyPrice": 687500,
+          "rentPrice": 628
+        },
+        "4+": {
+          "buyPrice": 747000,
+          "rentPrice": 675
+        }
+      },
+      "yield": {
+        "2": 4.505069124423963,
+        "3": 4.749963636363637,
+        "4+": 4.698795180722891
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 500000,
+          "rentPrice": 470
+        },
+        "3": {
+          "buyPrice": 550000,
+          "rentPrice": 568
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.888,
+        "3": 5.370181818181818
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:11:55.900Z"
+  },
+  {
+    "id": "south-bunbury-6230-wa",
+    "suburb": "South Bunbury",
+    "state": "WA",
+    "postcode": "6230",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 540200,
+          "rentPrice": 600
+        },
+        "3": {
+          "buyPrice": 677500,
+          "rentPrice": 620
+        },
+        "4+": {
+          "buyPrice": 905000,
+          "rentPrice": 700
+        }
+      },
+      "yield": {
+        "2": 5.775638652350981,
+        "3": 4.7586715867158675,
+        "4+": 4.022099447513812
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 330
+        },
+        "2": {
+          "buyPrice": 475000,
+          "rentPrice": 545
+        },
+        "3": {
+          "buyPrice": 595000,
+          "rentPrice": 600
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.9663157894736845,
+        "3": 5.243697478991597
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:12:03.149Z"
+  },
+  {
+    "id": "south-coogee-2034-nsw",
+    "suburb": "South Coogee",
+    "state": "NSW",
+    "postcode": "2034",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 2880000,
+          "rentPrice": 1088
+        },
+        "3": {
+          "buyPrice": 3550000,
+          "rentPrice": 1475
+        },
+        "4+": {
+          "buyPrice": 4500000,
+          "rentPrice": 2000
+        }
+      },
+      "yield": {
+        "2": 1.9644444444444444,
+        "3": 2.1605633802816904,
+        "4+": 2.311111111111111
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 675
+        },
+        "2": {
+          "buyPrice": 1380000,
+          "rentPrice": 850
+        },
+        "3": {
+          "buyPrice": 1610000,
+          "rentPrice": 1125
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 3.202898550724638,
+        "3": 3.633540372670808
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:12:09.211Z"
+  },
+  {
+    "id": "st-marys-2760-nsw",
+    "suburb": "St Marys",
+    "state": "NSW",
+    "postcode": "2760",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 953500,
+          "rentPrice": 480
+        },
+        "3": {
+          "buyPrice": 1050000,
+          "rentPrice": 575
+        },
+        "4+": {
+          "buyPrice": 1225000,
+          "rentPrice": 690
+        }
+      },
+      "yield": {
+        "2": 2.617724174095438,
+        "3": 2.8476190476190477,
+        "4+": 2.9289795918367347
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 330000,
+          "rentPrice": 400
+        },
+        "2": {
+          "buyPrice": 530000,
+          "rentPrice": 480
+        },
+        "3": {
+          "buyPrice": 767750,
+          "rentPrice": 600
+        }
+      },
+      "yield": {
+        "1": 6.303030303030304,
+        "2": 4.709433962264151,
+        "3": 4.063822859003582
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:12:27.664Z"
+  },
+  {
+    "id": "tarneit-3029-vic",
+    "suburb": "Tarneit",
+    "state": "VIC",
+    "postcode": "3029",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 605000,
+          "rentPrice": 450
+        },
+        "3": {
+          "buyPrice": 600000,
+          "rentPrice": 490
+        },
+        "4+": {
+          "buyPrice": 685000,
+          "rentPrice": 540
+        }
+      },
+      "yield": {
+        "2": 3.8677685950413223,
+        "3": 4.246666666666667,
+        "4+": 4.0992700729927005
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 370000,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 420000,
+          "rentPrice": 430
+        },
+        "3": {
+          "buyPrice": 501250,
+          "rentPrice": 473
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.3238095238095235,
+        "3": 4.906932668329177
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:12:34.773Z"
+  },
+  {
+    "id": "townsville-city-4810-qld",
+    "suburb": "Townsville City",
+    "state": "QLD",
+    "postcode": "4810",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 697500,
+          "rentPrice": 620
+        },
+        "3": {
+          "buyPrice": 760000,
+          "rentPrice": 630
+        },
+        "4+": {
+          "buyPrice": 902500,
+          "rentPrice": 900
+        }
+      },
+      "yield": {
+        "2": 4.622222222222222,
+        "3": 4.310526315789474,
+        "4+": 5.185595567867036
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 344000,
+          "rentPrice": 480
+        },
+        "2": {
+          "buyPrice": 477000,
+          "rentPrice": 555
+        },
+        "3": {
+          "buyPrice": 585000,
+          "rentPrice": 700
+        }
+      },
+      "yield": {
+        "1": 7.255813953488372,
+        "2": 6.050314465408805,
+        "3": 6.222222222222222
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:12:40.744Z"
+  },
+  {
+    "id": "upper-coomera-4209-qld",
+    "suburb": "Upper Coomera",
+    "state": "QLD",
+    "postcode": "4209",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 950000,
+          "rentPrice": 650
+        },
+        "3": {
+          "buyPrice": 913000,
+          "rentPrice": 750
+        },
+        "4+": {
+          "buyPrice": 1077500,
+          "rentPrice": 840
+        }
+      },
+      "yield": {
+        "2": 3.557894736842105,
+        "3": 4.271631982475356,
+        "4+": 4.053828306264501
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 500
+        },
+        "2": {
+          "buyPrice": 779750,
+          "rentPrice": 635
+        },
+        "3": {
+          "buyPrice": 770000,
+          "rentPrice": 700
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.23469060596345,
+        "3": 4.7272727272727275
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:12:46.831Z"
+  },
+  {
+    "id": "wallacia-2745-nsw",
+    "suburb": "Wallacia",
+    "state": "NSW",
+    "postcode": "2745",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 578
+        },
+        "3": {
+          "buyPrice": 975000,
+          "rentPrice": 590
+        },
+        "4+": {
+          "buyPrice": 1260000,
+          "rentPrice": 800
+        }
+      },
+      "yield": {
+        "2": 0,
+        "3": 3.1466666666666665,
+        "4+": 3.301587301587302
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 400
+        },
+        "2": {
+          "buyPrice": 370000,
+          "rentPrice": 425
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 5.972972972972973,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:12:52.546Z"
+  },
+  {
+    "id": "wavell-heights-4012-qld",
+    "suburb": "Wavell Heights",
+    "state": "QLD",
+    "postcode": "4012",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1272500,
+          "rentPrice": 600
+        },
+        "3": {
+          "buyPrice": 1390000,
+          "rentPrice": 700
+        },
+        "4+": {
+          "buyPrice": 1540000,
+          "rentPrice": 905
+        }
+      },
+      "yield": {
+        "2": 2.451866404715128,
+        "3": 2.6187050359712227,
+        "4+": 3.055844155844156
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 640000,
+          "rentPrice": 440
+        },
+        "2": {
+          "buyPrice": 755000,
+          "rentPrice": 600
+        },
+        "3": {
+          "buyPrice": 837000,
+          "rentPrice": 710
+        }
+      },
+      "yield": {
+        "1": 3.5749999999999997,
+        "2": 4.1324503311258285,
+        "3": 4.410991636798088
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:12:59.045Z"
+  },
+  {
+    "id": "werribee-3030-vic",
+    "suburb": "Werribee",
+    "state": "VIC",
+    "postcode": "3030",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 505500,
+          "rentPrice": 420
+        },
+        "3": {
+          "buyPrice": 613000,
+          "rentPrice": 450
+        },
+        "4+": {
+          "buyPrice": 715000,
+          "rentPrice": 500
+        }
+      },
+      "yield": {
+        "2": 4.320474777448071,
+        "3": 3.8172920065252858,
+        "4+": 3.6363636363636362
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 398500,
+          "rentPrice": 350
+        },
+        "2": {
+          "buyPrice": 429000,
+          "rentPrice": 400
+        },
+        "3": {
+          "buyPrice": 506250,
+          "rentPrice": 440
+        }
+      },
+      "yield": {
+        "1": 4.567126725219573,
+        "2": 4.848484848484849,
+        "3": 4.519506172839506
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:13:04.894Z"
+  },
+  {
+    "id": "williamstown-3016-vic",
+    "suburb": "Williamstown",
+    "state": "VIC",
+    "postcode": "3016",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1075000,
+          "rentPrice": 650
+        },
+        "3": {
+          "buyPrice": 1455000,
+          "rentPrice": 830
+        },
+        "4+": {
+          "buyPrice": 1925000,
+          "rentPrice": 1000
+        }
+      },
+      "yield": {
+        "2": 3.1441860465116283,
+        "3": 2.966323024054983,
+        "4+": 2.7012987012987013
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 570000,
+          "rentPrice": 433
+        },
+        "2": {
+          "buyPrice": 807265,
+          "rentPrice": 565
+        },
+        "3": {
+          "buyPrice": 1115000,
+          "rentPrice": 690
+        }
+      },
+      "yield": {
+        "1": 3.9501754385964913,
+        "2": 3.6394492514849524,
+        "3": 3.2179372197309415
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:13:11.216Z"
+  },
+  {
+    "id": "winter-valley-3358-vic",
+    "suburb": "Winter Valley",
+    "state": "VIC",
+    "postcode": "3358",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 570000,
+          "rentPrice": 440
+        },
+        "3": {
+          "buyPrice": 560000,
+          "rentPrice": 430
+        },
+        "4+": {
+          "buyPrice": 590000,
+          "rentPrice": 460
+        }
+      },
+      "yield": {
+        "2": 4.014035087719298,
+        "3": 3.9928571428571433,
+        "4+": 4.054237288135593
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "3": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:13:17.764Z"
+  },
+  {
+    "id": "wyoming-2250-nsw",
+    "suburb": "Wyoming",
+    "state": "NSW",
+    "postcode": "2250",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 670000,
+          "rentPrice": 520
+        },
+        "3": {
+          "buyPrice": 900000,
+          "rentPrice": 680
+        },
+        "4+": {
+          "buyPrice": 1020000,
+          "rentPrice": 790
+        }
+      },
+      "yield": {
+        "2": 4.035820895522388,
+        "3": 3.928888888888889,
+        "4+": 4.027450980392157
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 395
+        },
+        "2": {
+          "buyPrice": 595000,
+          "rentPrice": 500
+        },
+        "3": {
+          "buyPrice": 730000,
+          "rentPrice": 670
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 4.369747899159663,
+        "3": 4.772602739726027
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:13:26.340Z"
+  },
+  {
+    "id": "yeronga-4104-qld",
+    "suburb": "Yeronga",
+    "state": "QLD",
+    "postcode": "4104",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1140000,
+          "rentPrice": 600
+        },
+        "3": {
+          "buyPrice": 1377500,
+          "rentPrice": 700
+        },
+        "4+": {
+          "buyPrice": 1575000,
+          "rentPrice": 875
+        }
+      },
+      "yield": {
+        "2": 2.736842105263158,
+        "3": 2.6424682395644283,
+        "4+": 2.888888888888889
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 510000,
+          "rentPrice": 430
+        },
+        "2": {
+          "buyPrice": 755000,
+          "rentPrice": 580
+        },
+        "3": {
+          "buyPrice": 1035000,
+          "rentPrice": 755
+        }
+      },
+      "yield": {
+        "1": 4.384313725490196,
+        "2": 3.994701986754967,
+        "3": 3.793236714975846
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:13:31.859Z"
+  },
+  {
+    "id": "zetland-2017-nsw",
+    "suburb": "Zetland",
+    "state": "NSW",
+    "postcode": "2017",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 1527500,
+          "rentPrice": 1043
+        },
+        "3": {
+          "buyPrice": 2180000,
+          "rentPrice": 1400
+        },
+        "4+": {
+          "buyPrice": 3015000,
+          "rentPrice": 1850
+        }
+      },
+      "yield": {
+        "2": 3.5506382978723403,
+        "3": 3.339449541284404,
+        "4+": 3.190713101160862
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 700000,
+          "rentPrice": 850
+        },
+        "2": {
+          "buyPrice": 1050000,
+          "rentPrice": 1150
+        },
+        "3": {
+          "buyPrice": 1535000,
+          "rentPrice": 1538
+        }
+      },
+      "yield": {
+        "1": 6.314285714285714,
+        "2": 5.695238095238095,
+        "3": 5.210162866449512
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:13:37.743Z"
+  },
+  {
+    "id": "zuccoli-0832-nt",
+    "suburb": "Zuccoli",
+    "state": "NT",
+    "postcode": "0832",
+    "isHot": true,
+    "house": {
+      "bedrooms": {
+        "2": {
+          "buyPrice": 690000,
+          "rentPrice": 625
+        },
+        "3": {
+          "buyPrice": 660000,
+          "rentPrice": 750
+        },
+        "4+": {
+          "buyPrice": 723500,
+          "rentPrice": 780
+        }
+      },
+      "yield": {
+        "2": 4.710144927536232,
+        "3": 5.909090909090909,
+        "4+": 5.606081548030407
+      }
+    },
+    "unit": {
+      "bedrooms": {
+        "1": {
+          "buyPrice": 0,
+          "rentPrice": 0
+        },
+        "2": {
+          "buyPrice": 410000,
+          "rentPrice": 640
+        },
+        "3": {
+          "buyPrice": 498000,
+          "rentPrice": 680
+        }
+      },
+      "yield": {
+        "1": 0,
+        "2": 8.117073170731707,
+        "3": 7.100401606425703
+      }
+    },
+    "dateAdded": "2026-02-19T01:10:39.311Z",
+    "lastUpdated": "2026-02-19T02:13:44.045Z"
+  }
+]
