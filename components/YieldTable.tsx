@@ -60,6 +60,9 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
   const [demographicsCache, setDemographicsCache] = useState<Map<string, SuburbDemographics>>(new Map())
   const [demographicsError, setDemographicsError] = useState<Set<string>>(new Set())
 
+  const isLocalhost = typeof window !== 'undefined' && 
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+
   const toggleExpand = useCallback(async (id: string, suburb: SuburbData) => {
     setExpandedRows(prev => {
       const next = new Set(prev)
@@ -263,7 +266,7 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
                 isLoadingDemographics={demographicsLoading.has(row.suburb.id)}
                 hasDemographicsError={demographicsError.has(row.suburb.id)}
                 onToggleExpand={() => toggleExpand(row.suburb.id, row.suburb)}
-                onDelete={() => handleDelete(row.suburb.id)}
+                {...(isLocalhost && { onDelete: () => handleDelete(row.suburb.id) })}
                 onPaste={() => handlePasteFromClipboard(row.suburb)}
               />
             ))}
@@ -322,7 +325,7 @@ interface SuburbRowProps {
   isLoadingDemographics: boolean
   hasDemographicsError: boolean
   onToggleExpand: () => void
-  onDelete: () => void
+  onDelete?: () => void
   onPaste: () => void
 }
 
@@ -402,7 +405,7 @@ function SuburbRow({
             >
               <ClipboardIcon className="h-4 w-4" />
             </button>
-            {row.isNewSuburb && (
+            {row.isNewSuburb && onDelete && (
               <button
                 onClick={onDelete}
                 className="text-red-600 hover:text-red-800 text-sm"
