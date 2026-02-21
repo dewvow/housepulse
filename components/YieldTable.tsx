@@ -106,8 +106,12 @@ export function YieldTable({ suburbs, filters, onDataChange }: YieldTableProps) 
 
   const handleDelete = useCallback(async (id: string) => {
     if (confirm('Are you sure you want to delete this suburb?')) {
-      await deleteSuburb(id)
-      onDataChange()
+      try {
+        await deleteSuburb(id)
+        onDataChange()
+      } catch (error) {
+        alert(error instanceof Error ? error.message : 'Failed to delete suburb')
+      }
     }
   }, [onDataChange])
 

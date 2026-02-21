@@ -32,7 +32,10 @@ export async function deleteSuburb(id: string): Promise<void> {
     const response = await fetch(`/api/suburbs?id=${id}`, {
       method: 'DELETE',
     })
-    if (!response.ok) throw new Error('Failed to delete suburb')
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      throw new Error(errorData.error || 'Failed to delete suburb')
+    }
   } catch (error) {
     console.error('Error deleting suburb:', error)
     throw error
