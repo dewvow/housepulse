@@ -108,6 +108,13 @@ export async function POST(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    const host = request.headers.get('host') || ''
+    const isLocalhost = host.includes('localhost') || host.includes('127.0.0.1')
+    
+    if (!isLocalhost) {
+      return NextResponse.json({ error: 'Delete not allowed' }, { status: 403 })
+    }
+    
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')
     
